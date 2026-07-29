@@ -547,6 +547,22 @@ class UIManager {
     if (screenId === 'statistics-menu') this.renderStatistics();
     if (screenId === 'customization-menu') this.renderStoreItems();
     if (screenId === 'main-menu' || screenId === 'statistics-menu') this.updateProfileHUD();
+    if (screenId === 'howtoplay-menu') this.updateHowToPlayControls();
+  }
+
+  updateHowToPlayControls() {
+    const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth <= 768);
+    const desktopBlock = document.getElementById('howtoplay-desktop-controls');
+    const mobileBlock = document.getElementById('howtoplay-mobile-controls');
+    if (desktopBlock && mobileBlock) {
+      if (isMobile) {
+        desktopBlock.classList.add('hidden');
+        mobileBlock.classList.remove('hidden');
+      } else {
+        desktopBlock.classList.remove('hidden');
+        mobileBlock.classList.add('hidden');
+      }
+    }
   }
 
   bindNavigation() {

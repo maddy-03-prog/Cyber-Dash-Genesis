@@ -58,6 +58,9 @@ class GameEngine {
 
     this.initCanvasSize();
     window.addEventListener('resize', () => this.initCanvasSize());
+    window.addEventListener('orientationchange', () => {
+      setTimeout(() => this.initCanvasSize(), 200);
+    });
     
     this.initMissions();
   }

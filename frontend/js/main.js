@@ -65,6 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }));
 
   // Pause screen binds
+  const musicBtn = document.getElementById('hud-music-btn');
+  if (musicBtn) {
+    musicBtn.addEventListener('click', safeExec(() => {
+      if (window.audio) window.audio.toggleMusicMute();
+    }));
+  }
+
   document.getElementById('hud-pause-btn').addEventListener('click', safeExec(() => {
     window.game.pauseGame();
   }));

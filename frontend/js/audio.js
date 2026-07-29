@@ -65,9 +65,61 @@ class AudioEngine {
     const settings = window.storage && window.storage.state && window.storage.state.settings;
     this.setMusicVolume(settings ? settings.musicVolume : 70);
     this.setSfxVolume(settings ? settings.sfxVolume : 80);
+    this.updateMusicButtonUI(this.isMusicMuted());
     
     // Automatically start synth music on first interaction
     this.startLobbyMusic();
+  }
+
+  isMusicMuted() {
+    const saved = localStorage.getItem('cyberdash_music_muted');
+    if (saved !== null) {
+      return saved === 'true';
+    }
+    const settings = window.storage && window.storage.state && window.storage.state.settings;
+    return settings ? !!settings.musicMuted : false;
+  }
+
+  setMusicVolume(val) {
+    this.musicVolume = val / 100;
+    if (this.musicGain && this.ctx) {
+      const muted = this.isMusicMuted();
+      this.musicGain.gain.setValueAtTime(muted ? 0 : this.musicVolume, this.ctx.currentTime);
+    }
+  }
+
+  toggleMusicMute() {
+    const currentMuted = this.isMusicMuted();
+    const newMuted = !currentMuted;
+    localStorage.setItem('cyberdash_music_muted', newMuted ? 'true' : 'false');
+    
+    if (window.storage && window.storage.state && window.storage.state.settings) {
+      window.storage.state.settings.musicMuted = newMuted;
+      if (window.storage.save) window.storage.save();
+    }
+
+    if (this.musicGain && this.ctx) {
+      this.musicGain.gain.setValueAtTime(newMuted ? 0 : this.musicVolume, this.ctx.currentTime);
+    }
+
+    this.updateMusicButtonUI(newMuted);
+    return !newMuted;
+  }
+
+  updateMusicButtonUI(muted) {
+    const btn = document.getElementById('hud-music-btn');
+    const icon = document.getElementById('hud-music-icon');
+    if (btn && icon) {
+      if (muted) {
+        btn.classList.add('muted');
+        btn.setAttribute('title', 'Music OFF');
+        icon.innerText = '🔇';
+      } else {
+        btn.classList.remove('muted');
+        btn.setAttribute('title', 'Music ON');
+        icon.innerText = '🔊';
+      }
+    }
   }
 
   startMusic() {

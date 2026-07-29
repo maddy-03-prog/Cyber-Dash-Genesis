@@ -580,13 +580,16 @@
         </div>
       </div>
 
-      <!-- Top Right: Score & Distance & Coins -->
+      <!-- Top Right: Score & Distance & Coins & Floating Music Toggle -->
       <div class="hud-group top-right">
         <div class="hud-stat"><span class="hud-label">SCORE</span><span id="hud-score" class="hud-val-large">000,000</span></div>
         <div class="hud-stat"><span class="hud-label">DIST</span><span id="hud-distance" class="hud-val-large">0m</span></div>
         <div class="hud-stat text-yellow"><span class="hud-label">CREDITS</span><span id="hud-coins" class="hud-val-large">0</span></div>
         <div id="hud-mp-code" class="hud-stat text-cyan hidden"><span class="hud-label">ROOM</span><span id="hud-mp-code-val" class="hud-val-large">LOBBY</span></div>
         <div id="hud-stage-display" class="hud-stat text-cyan hidden"><span class="hud-label">STAGE</span><span id="hud-stage-label" class="hud-val-large">1</span></div>
+        <button id="hud-music-btn" class="hud-music-toggle" title="Toggle Music">
+          <span id="hud-music-icon">🔊</span>
+        </button>
       </div>
 
 
@@ -908,12 +911,22 @@
         <h2 class="panel-title">TRANSMISSION ENCRYPTED: RUN INSTRUCTIONS</h2>
         <div class="panel-content scrollable text-left instruction-panel">
           <h3>CONTROLS</h3>
-          <p><strong>MOVE LEFT:</strong> <kbd>A</kbd> or <kbd>◀ Arrow</kbd></p>
-          <p><strong>MOVE RIGHT:</strong> <kbd>D</kbd> or <kbd>▶ Arrow</kbd></p>
-          <p><strong>JUMP:</strong> <kbd>SPACEBAR</kbd> (Press again in mid-air to <strong>DOUBLE JUMP</strong>)</p>
-          <p><strong>SLIDE:</strong> <kbd>S</kbd> or <kbd>▼ Arrow</kbd> (Compress chassis to slip under energy grids)</p>
-          <p><strong>NEON DASH:</strong> <kbd>SHIFT</kbd> (Invincible burst forward, breaks obstacles, short recharge)</p>
-          <p><strong>PAUSE SYSTEM:</strong> <kbd>ESC</kbd></p>
+          <!-- Desktop Controls Instruction Block -->
+          <div id="howtoplay-desktop-controls" class="control-block">
+            <p><strong>Move:</strong> <kbd>Left / Right Arrow</kbd> or <kbd>A / D</kbd></p>
+            <p><strong>Jump:</strong> <kbd>Space</kbd></p>
+            <p><strong>Dash:</strong> <kbd>Shift</kbd></p>
+            <p><strong>Pause:</strong> <kbd>Esc</kbd></p>
+          </div>
+
+          <!-- Mobile Controls Instruction Block -->
+          <div id="howtoplay-mobile-controls" class="control-block hidden">
+            <p style="color:var(--primary-cyan); font-weight:bold; margin-bottom:8px;">Use the on-screen touch controls</p>
+            <p><strong>Tap Left and Right</strong> to move</p>
+            <p><strong>Tap Jump</strong> to jump</p>
+            <p><strong>Tap Dash</strong> for speed boost</p>
+            <p><strong>Tap Pause</strong> to pause the game</p>
+          </div>
           <br>
           <h3>UPGRADES (POWERUPS)</h3>
           <p><span class="cyan-glow">■ SHIELD:</span> Absorbs a single collision.</p>
