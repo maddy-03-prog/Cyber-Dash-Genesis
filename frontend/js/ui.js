@@ -532,14 +532,25 @@ class UIManager {
     this.activeScreen = screenId;
 
     const hud = document.getElementById('game-hud');
+    const mobileControls = document.getElementById('mobile-controls');
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth <= 1024) || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
     if (hud) {
       if (screenId === 'playing') {
         hud.classList.remove('hidden');
         hud.style.opacity = 1;
+        if (mobileControls) {
+          if (isTouchDevice) {
+            mobileControls.classList.remove('hidden');
+          } else {
+            mobileControls.classList.add('hidden');
+          }
+        }
       } else if (screenId === 'main-menu' || screenId === 'gameover-menu' || screenId === 'photo-overlay' || 
                  screenId === 'exit-menu' || screenId === 'multiplayer-menu' || 
                  screenId === 'difficulty-select-menu' || screenId === 'profile-setup-overlay') {
         hud.classList.add('hidden');
+        if (mobileControls) mobileControls.classList.add('hidden');
       }
     }
 

@@ -136,12 +136,10 @@ class InputManager {
   }
 
   bindTouchControls() {
-    // Bind DOM touch buttons for mobile devices
     const touchButtons = [
       { id: 'btn-left', action: 'left' },
       { id: 'btn-right', action: 'right' },
       { id: 'btn-jump', action: 'jump' },
-      { id: 'btn-slide', action: 'slide' },
       { id: 'btn-dash', action: 'dash' }
     ];
 
@@ -150,24 +148,28 @@ class InputManager {
       if (!btn) return;
 
       const triggerStart = (e) => {
-        e.preventDefault();
+        if (e.cancelable) e.preventDefault();
         this.activeActions[action] = true;
+        btn.classList.add('active');
         if (action === 'jump') this.keys[' '] = true;
-        if (action === 'slide') this.keys['s'] = true;
         if (action === 'dash') this.keys['Shift'] = true;
       };
 
       const triggerEnd = (e) => {
-        e.preventDefault();
+        if (e.cancelable) e.preventDefault();
         this.activeActions[action] = false;
+        btn.classList.remove('active');
         if (action === 'jump') this.keys[' '] = false;
-        if (action === 'slide') this.keys['s'] = false;
         if (action === 'dash') this.keys['Shift'] = false;
       };
 
       btn.addEventListener('mousedown', triggerStart);
       btn.addEventListener('mouseup', triggerEnd);
       btn.addEventListener('mouseleave', triggerEnd);
+
+      btn.addEventListener('pointerdown', triggerStart);
+      btn.addEventListener('pointerup', triggerEnd);
+      btn.addEventListener('pointercancel', triggerEnd);
 
       btn.addEventListener('touchstart', triggerStart, { passive: false });
       btn.addEventListener('touchend', triggerEnd, { passive: false });

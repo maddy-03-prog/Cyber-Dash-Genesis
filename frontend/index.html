@@ -599,13 +599,12 @@
       <!-- Mobile Touch Controls Overlay -->
       <div id="mobile-controls" class="hidden">
         <div class="controls-left">
-          <button id="btn-left" class="ctrl-btn ctrl-dir">◀</button>
-          <button id="btn-right" class="ctrl-btn ctrl-dir">▶</button>
+          <button id="btn-left" class="ctrl-btn ctrl-dir" aria-label="Move Left">◀</button>
+          <button id="btn-right" class="ctrl-btn ctrl-dir" aria-label="Move Right">▶</button>
         </div>
         <div class="controls-right">
-          <button id="btn-slide" class="ctrl-btn">SLIDE</button>
-          <button id="btn-dash" class="ctrl-btn">DASH</button>
-          <button id="btn-jump" class="ctrl-btn">JUMP</button>
+          <button id="btn-dash" class="ctrl-btn ctrl-action text-pink">⚡ DASH</button>
+          <button id="btn-jump" class="ctrl-btn ctrl-action text-cyan">⬆ JUMP</button>
         </div>
       </div>
       
@@ -913,7 +912,7 @@
           <h3>CONTROLS</h3>
           <!-- Desktop Controls Instruction Block -->
           <div id="howtoplay-desktop-controls" class="control-block">
-            <p><strong>Move:</strong> <kbd>Left / Right Arrow</kbd> or <kbd>A / D</kbd></p>
+            <p><strong>Move:</strong> <kbd>←</kbd> <kbd>→</kbd> or <kbd>A</kbd> <kbd>D</kbd></p>
             <p><strong>Jump:</strong> <kbd>Space</kbd></p>
             <p><strong>Dash:</strong> <kbd>Shift</kbd></p>
             <p><strong>Pause:</strong> <kbd>Esc</kbd></p>
@@ -921,11 +920,13 @@
 
           <!-- Mobile Controls Instruction Block -->
           <div id="howtoplay-mobile-controls" class="control-block hidden">
-            <p style="color:var(--primary-cyan); font-weight:bold; margin-bottom:8px;">Use the on-screen touch controls</p>
-            <p><strong>Tap Left and Right</strong> to move</p>
-            <p><strong>Tap Jump</strong> to jump</p>
-            <p><strong>Tap Dash</strong> for speed boost</p>
-            <p><strong>Tap Pause</strong> to pause the game</p>
+            <p style="color:var(--primary-cyan); font-weight:bold; margin-bottom:8px;">Use the on-screen controls</p>
+            <p><strong>←</strong> Move Left</p>
+            <p><strong>→</strong> Move Right</p>
+            <p><strong>⬆</strong> Jump</p>
+            <p><strong>⚡</strong> Dash</p>
+            <p><strong>⏸</strong> Pause</p>
+            <p><strong>🔊</strong> Music Button</p>
           </div>
           <br>
           <h3>UPGRADES (POWERUPS)</h3>

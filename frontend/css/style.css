@@ -1135,15 +1135,22 @@ canvas {
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
   outline: none;
 }
-.ctrl-btn:active {
+.ctrl-btn:active, .ctrl-btn.active {
   background: var(--primary-cyan);
   color: #000;
   border-color: var(--primary-cyan);
   box-shadow: var(--glow-cyan);
-  transform: scale(0.95);
+  transform: scale(0.92);
 }
 .ctrl-btn.ctrl-dir {
   font-size: 1.4rem;
+}
+.ctrl-btn.ctrl-action {
+  width: 68px;
+  height: 68px;
+  border-radius: 14px;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
 }
 
 /* ==================== REPLAY SYSTEM OVERLAY ==================== */

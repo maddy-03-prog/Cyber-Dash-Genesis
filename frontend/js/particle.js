@@ -26,10 +26,40 @@ class Particle {
 class ParticleSystem {
   constructor() {
     this.pool = [];
-    this.maxParticles = 400;
-    // Pre-populate pool
+    this.deviceTier = this.detectDeviceTier();
+    
+    // Auto-tune max particles based on device capability
+    if (this.deviceTier === 'phone-optimized') {
+      this.maxParticles = 100;
+    } else if (this.deviceTier === 'phone') {
+      this.maxParticles = 150;
+    } else if (this.deviceTier === 'tablet') {
+      this.maxParticles = 250;
+    } else if (this.deviceTier === 'laptop') {
+      this.maxParticles = 350;
+    } else {
+      this.maxParticles = 450; // Ultra Desktop
+    }
+
     for (let i = 0; i < this.maxParticles; i++) {
       this.pool.push(new Particle());
+    }
+  }
+
+  detectDeviceTier() {
+    const ua = navigator.userAgent || '';
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua) || window.innerWidth <= 768;
+    const isTablet = /iPad|Android/i.test(ua) && window.innerWidth > 768 && window.innerWidth <= 1024;
+    const cores = navigator.hardwareConcurrency || 4;
+
+    if (isMobile) {
+      return cores <= 4 ? 'phone-optimized' : 'phone';
+    } else if (isTablet) {
+      return 'tablet';
+    } else if (window.innerWidth <= 1366) {
+      return 'laptop';
+    } else {
+      return 'desktop';
     }
   }
 
