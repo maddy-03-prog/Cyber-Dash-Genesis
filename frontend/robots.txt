@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cyber-dash-genesis.netlify.app/sitemap.xml

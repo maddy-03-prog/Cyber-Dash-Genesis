@@ -1,0 +1,73 @@
+/* ==================== CYBER DASH: GENESIS — THEME SYSTEM ==================== */
+
+:root {
+  --bg-color: #03030c;
+  --bg-accent: #090918;
+  --primary-cyan: #00f3ff;
+  --primary-pink: #ff007f;
+  --primary-purple: #bd00ff;
+  --text-color: #ffffff;
+  --text-muted: #8fa0b5;
+  --color-yellow: #ffcc00;
+  --color-green: #00ff66;
+  --color-red: #ff3333;
+
+  --font-cyber: 'Orbitron', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-body: 'Rajdhani', sans-serif;
+
+  --glow-cyan: 0 0 10px rgba(0, 243, 255, 0.6), 0 0 20px rgba(0, 243, 255, 0.3);
+  --glow-pink: 0 0 10px rgba(255, 0, 127, 0.6), 0 0 20px rgba(255, 0, 127, 0.3);
+  --glow-purple: 0 0 10px rgba(189, 0, 255, 0.5), 0 0 20px rgba(189, 0, 255, 0.2);
+}
+
+/* CRT Scanline Overlay */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 4px, 6px 100%;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.crt-overlay::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: radial-gradient(circle, rgba(18,16,16,0) 40%, rgba(0,0,0,0.45) 100%);
+  pointer-events: none;
+}
+
+/* Glitch Vignette */
+.glitch-vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  box-shadow: inset 0 0 100px rgba(0, 243, 255, 0.15);
+  z-index: 9998;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #03030c;
+}
+::-webkit-scrollbar-thumb {
+  background: #00f3ff;
+  border-radius: 4px;
+  box-shadow: 0 0 10px #00f3ff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff007f;
+}

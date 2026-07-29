@@ -1,0 +1,58 @@
+/* ==================== CYBER DASH: GENESIS — RESPONSIVE STYLES ==================== */
+
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 3rem !important;
+  }
+  .hero-subtitle {
+    font-size: 1.2rem !important;
+  }
+  .landing-header {
+    padding: 10px 20px !important;
+  }
+  .nav-links {
+    display: none !important;
+  }
+  .hud-top-bar {
+    padding: 8px 15px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  .hero-title {
+    font-size: 2.2rem !important;
+  }
+  .hero-cta-grid {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+  .cta-btn {
+    width: 90% !important;
+    max-width: 320px !important;
+    text-align: center !important;
+  }
+  .menu-panel {
+    width: 95% !important;
+    padding: 15px !important;
+  }
+  .mobile-touch-controls {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.8rem !important;
+  }
+  .hero-badge {
+    font-size: 0.75rem !important;
+    padding: 4px 10px !important;
+  }
+  .stat-card {
+    min-width: 100% !important;
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "cyber-dash-genesis",
+  "version": "1.0.0",
+  "description": "Cyber Dash: Genesis - AAA Cyberpunk Action Game & Real-time Server",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "start": "npm --prefix backend start",
+    "dev": "npm --prefix backend dev",
+    "seed": "npm --prefix backend run seed",
+    "test": "powershell -ExecutionPolicy Bypass -File ./verify_deployment.ps1",
+    "audit": "powershell -ExecutionPolicy Bypass -File ./verify_deployment.ps1"
+  },
+  "keywords": [
+    "cyberpunk",
+    "action-game",
+    "socket-io",
+    "express",
+    "mongodb",
+    "canvas",
+    "netlify"
+  ],
+  "author": "Madhan Kumar (VIT Chennai)",
+  "license": "MIT"
+}

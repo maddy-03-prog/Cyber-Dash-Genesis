@@ -1,0 +1,16 @@
+{
+  "short_name": "CyberDash",
+  "name": "Cyber Dash: Genesis - Official AAA Game",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2303020c'/><text y='70' x='15' font-size='65' fill='%2300f3ff'>⚡</text></svg>",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512"
+    }
+  ],
+  "start_url": "/index.html",
+  "background_color": "#03020c",
+  "theme_color": "#00f3ff",
+  "display": "standalone",
+  "orientation": "landscape"
+}

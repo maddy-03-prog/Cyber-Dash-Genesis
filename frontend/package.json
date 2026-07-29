@@ -1,0 +1,17 @@
+{
+  "name": "cyber-dash-frontend",
+  "version": "1.0.0",
+  "description": "Cyber Dash: Genesis - Frontend Web Application (Netlify Ready)",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "cyberpunk",
+    "game",
+    "netlify",
+    "pwa",
+    "html5-canvas"
+  ],
+  "author": "Madhan Kumar (VIT Chennai)",
+  "license": "MIT"
+}

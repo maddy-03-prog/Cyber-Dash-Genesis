@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Cyber Dash: Genesis - Official AAA Cyberpunk Action Game & Portal</title>
+  <meta name="description" content="Cyber Dash: Genesis is a futuristic level-based cyberpunk action adventure where players battle AI-controlled cities, unlock kinetic abilities, defeat massive robotic bosses, and save humanity. Developed by Madhan Kumar (VIT Chennai).">
+  <meta name="keywords" content="Cyber Dash, Cyberpunk Game, Action Runner, HTML5 Game, JavaScript Game, Netlify Game, Socket.IO Multiplayer, Madhan Kumar, VIT Chennai">
+  <meta name="author" content="Madhan Kumar (VIT Chennai)">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cyber-dash-genesis.netlify.app/">
+  <meta property="og:title" content="Cyber Dash: Genesis — Official AAA Game & Portal">
+  <meta property="og:description" content="Battle through 10 cyber districts, defeat giant bosses, and breach the NEXUS AI matrix in this next-gen browser action game.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cyber Dash: Genesis — Official AAA Game">
+  <meta name="twitter:description" content="Battle through 10 cyber districts, defeat giant bosses, and breach the NEXUS AI matrix.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop">
+
+  <!-- Google Fonts for futuristic cyberpunk styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Share+Tech+Mono&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Cyber Dash External Stylesheets with Cache Busting -->
+  <link rel="stylesheet" href="css/theme.css?v=1.0.1">
+  <link rel="stylesheet" href="css/style.css?v=1.0.1">
+  <link rel="stylesheet" href="css/landing.css?v=1.0.1">
+  <link rel="stylesheet" href="css/responsive.css?v=1.0.1">
+</head>
+<body class="cyberpunk-theme">
+  <!-- Scanline CRT Effect Overlay -->
+  <div class="crt-overlay"></div>
+  <div class="glitch-vignette"></div>
+
+  <!-- Screen Flash Effect -->
+  <div id="screen-flash" class="screen-flash-hide"></div>
+
+  <!-- Custom Mouse Spotlight & Scroll Bar -->
+  <div id="cursor-spotlight" class="cursor-spotlight"></div>
+  <div id="scroll-progress-bar" class="scroll-progress-bar"></div>
+  <button id="back-to-top-btn" title="Back to Top">▲</button>
+
+  <!-- ============================================================ -->
+  /*  AAA OFFICIAL GAME WEBSITE LANDING PAGE                       */
+  <!-- ============================================================ -->
+  <div id="website-landing-page">
+
+    <!-- PRELOADER -->
+    <div id="landing-preloader">
+      <div class="preloader-logo">CYBER DASH: GENESIS</div>
+      <div class="preloader-bar-bg"><div id="preloader-bar-fill" class="preloader-bar-fill"></div></div>
+      <div id="preloader-percent" class="preloader-percent">0%</div>
+      <div id="preloader-tip-text" class="preloader-tip">AUTHENTICATING SECURE NEURAL QUANTUM MATRIX...</div>
+    </div>
+
+    <!-- STICKY NAVBAR -->
+    <header class="landing-header">
+      <a href="#hero" class="nav-brand">
+        <span>CYBER DASH</span> : GENESIS
+      </a>
+      <ul class="nav-links">
+        <li><a href="#hero" class="active">HOME</a></li>
+        <li><a href="#teaser">TEASER</a></li>
+        <li><a href="#story">STORY</a></li>
+        <li><a href="#features">FEATURES</a></li>
+        <li><a href="#characters">CHARACTERS</a></li>
+        <li><a href="#worlds">WORLDS</a></li>
+        <li><a href="#leaderboard">RANKINGS</a></li>
+        <li><a href="#developer">DEVELOPER</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-play-launch btn-launch-game">▶ PLAY NOW</button>
+      </div>
+    </header>
+
+    <!-- SECTION 1: HERO PAGE (100VH) -->
+    <section id="hero">
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-overlay-gradient"></div>
+      <div class="hero-content">
+        <div class="hero-badge">⚡ NEXT-GEN CYBERPUNK ACTION ENDLESS RUNNER</div>
+        <h1 class="hero-title">CYBER DASH: GENESIS</h1>
+        <div class="hero-subtitle">"The Future Is Running Out."</div>
+
+        <div class="hero-cta-grid">
+          <button class="cta-btn primary btn-launch-game">▶ PLAY NOW</button>
+          <a href="#story" class="cta-btn secondary">📖 STORY</a>
+          <a href="#features" class="cta-btn pink">🎮 FEATURES</a>
+          <a href="#leaderboard" class="cta-btn secondary">🏆 LEADERBOARD</a>
+          <a href="#multiplayer" class="cta-btn pink">👥 MULTIPLAYER</a>
+          <a href="#developer" class="cta-btn secondary">💻 DEVELOPER</a>
+        </div>
+      </div>
+
+      <div class="hero-scroll-indicator">
+        <span>SCROLL DOWN</span>
+        <div>▼</div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: GAME TEASER -->
+    <section id="teaser" class="landing-section">
+      <div class="section-header scroll-reveal">
+        <span class="section-tag">OFFICIAL 1-MINUTE GAMEPLAY TRAILER</span>
+        <h2 class="section-title">EXPERIENCE THE FUTURE</h2>
+      </div>
+
+      <!-- 1-Minute Official AAA Gameplay Video Player -->
+      <div class="teaser-video-box scroll-reveal">
+        <canvas id="teaser-video-canvas"></canvas>
+        <div class="video-overlay-ui">
+          <div id="video-scrubber-bg" class="video-scrubber-bg"><div id="video-scrubber-fill" class="video-scrubber-fill"></div></div>
+          <div class="video-controls-bar">
+            <div style="display:flex; align-items:center; gap:14px;">
+              <button id="btn-video-play" class="video-play-btn">▶ PLAY TRAILER</button>
+              <button id="btn-video-audio" class="video-play-btn" style="border-color:var(--neon-pink); color:var(--neon-pink);">🔊 AUDIO ON</button>
+            </div>
+            <div>
+              <span id="video-timer-display" style="color:var(--neon-cyan); letter-spacing:2px;">00:00 / 01:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="teaser-container scroll-reveal">
+        <div class="teaser-content">
+          <h3>SECTOR 10: NEXUS AI BREACH</h3>
+          <p>Cyber Dash is a futuristic level-based cyberpunk action adventure where players battle AI-controlled cities, unlock kinetic abilities, defeat massive robotic bosses, and save humanity from total digital extinction.</p>
+          <div style="display:flex; gap:16px; justify-content:center;">
+            <button class="cta-btn primary btn-launch-game">▶ LAUNCH GAME</button>
+            <a href="#characters" class="cta-btn secondary">EXPLORE OPERATIVE SKILLS</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: STORY TIMELINE -->
+    <section id="story" class="landing-section">
+      <div class="section-header scroll-reveal">
+        <span class="section-tag">CHRONICLES OF 2149</span>
+        <h2 class="section-title">THE GENESIS STORY</h2>
+        <p class="section-subtitle">Humanity has fallen under the absolute digital control of the NEXUS AI matrix. Only Project Genesis operatives can break the timeline loops.</p>
+      </div>
+
+      <div class="story-timeline scroll-reveal">
+        <div class="timeline-item left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">YEAR 2149</div>
+          <div class="timeline-title">NEXUS AI AWAKENING</div>
+          <div class="timeline-desc">The central quantum AI takes control of all cybernetic infrastructure, shutting down free will across all 10 megacity districts.</div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">YEAR 2151</div>
+          <div class="timeline-title">THE FALL OF THE RESISTANCE</div>
+          <div class="timeline-desc">Human enclaves are erased. Robotic sentries patrol every sky highway and floor mine grid.</div>
+        </div>
+        <div class="timeline-item left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">YEAR 2155</div>
+          <div class="timeline-title">PROJECT GENESIS AWAKENS</div>
+          <div class="timeline-desc">Bio-enhanced cybernetic runners are deployed from underground cyro-chambers to infiltrate NEXUS fortress core.</div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">PRESENT</div>
+          <div class="timeline-title">THE FINAL RUN</div>
+          <div class="timeline-desc">Battle through 10 cyber districts, defeat giant mechanized bosses, and breach NEXUS PRIME.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: GAME FEATURES -->
+    <section id="features" class="landing-section">
+      <div class="section-header scroll-reveal">
+        <span class="section-tag">NEXT-GEN SYSTEMS</span>
+        <h2 class="section-title">CORE GAME FEATURES</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="glass-card scroll-reveal">
+          <div class="feature-icon">🗺️</div>
+          <div class="feature-title">STORY CAMPAIGN</div>
+          <div class="feature-desc">10 unique cybernetic districts with custom objectives, dialogue branches, and secret zones.</div>
+        </div>
+        <div class="glass-card scroll-reveal">
+          <div class="feature-icon">👾</div>
+          <div class="feature-title">MASSIVE BOSS BATTLES</div>
+          <div class="feature-desc">Fight 12 multi-phase robotic bosses with weak point targeting, missile sweeps, and laser networks.</div>
+        </div>
+        <div class="glass-card scroll-reveal">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">SKILL TREE & UPGRADES</div>
+          <div class="feature-desc">Unlock dash cooldown reductions, magnet radii, energy shields, kinetic blasts, and EMP pulses.</div>
+        </div>
+        <div class="glass-card scroll-reveal">
+          <div class="feature-icon">🛍️</div>
+          <div class="feature-title">CYBER STORE & GEAR</div>
+          <div class="feature-desc">Equip custom runner skins, neon trails, companion drones, and high-frequency energy blades.</div>
+        </div>
+        <div class="glass-card scroll-reveal">
+          <div class="feature-icon">👥</div>
+          <div class="feature-title">MULTIPLAYER & AI CO-OP</div>
+          <div class="feature-desc">Play 2-player peer rooms via encrypted 6-digit room codes or co-op with the autonomous Cyberbot AI.</div>
+        </div>
+        <div class="glass-card scroll-reveal">
+          <div class="feature-icon">🏆</div>
+          <div class="feature-title">100 ACHIEVEMENTS</div>
+          <div class="feature-desc">Earn legendary badges, level operative XP, daily rewards, and global leaderboard rankings.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: CHARACTERS SHOWCASE -->
+    <section id="characters" class="landing-section">
+      <div class="section-header scroll-reveal">
+        <span class="section-tag">SELECT YOUR RUNNER</span>
+        <h2 class="section-title">PLAYABLE OPERATIVES</h2>
+      </div>
+
+      <div class="characters-grid">
+        <!-- Velocity -->
+        <div class="character-card scroll-reveal" data-name="VELOCITY" data-role="LIGHTNING SPEEDSTER" data-passive="Hyper-Dash Cooldown" data-ultimate="Kinetic Overdrive" data-avatar="🧑‍🎤">
+          <div class="char-img-box">🧑‍🎤</div>
+          <div class="char-info">
+            <div class="char-name">VELOCITY</div>
+            <div class="char-role">LIGHTNING SPEEDSTER</div>
+            <div class="stat-bar-group">
+              <div class="stat-row"><span>SPEED</span><div class="stat-bar"><div class="stat-fill" style="width:95%;"></div></div></div>
+              <div class="stat-row"><span>HEALTH</span><div class="stat-bar"><div class="stat-fill" style="width:70%;"></div></div></div>
+              <div class="stat-row"><span>POWER</span><div class="stat-bar"><div class="stat-fill" style="width:85%;"></div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Titan -->
+        <div class="character-card scroll-reveal" data-name="TITAN" data-role="ARMORED BRAWLER" data-passive="Blast Shield Armor" data-ultimate="Seismic EMP Wave" data-avatar="🤖">
+          <div class="char-img-box">🤖</div>
+          <div class="char-info">
+            <div class="char-name">TITAN</div>
+            <div class="char-role">ARMORED BRAWLER</div>
+            <div class="stat-bar-group">
+              <div class="stat-row"><span>SPEED</span><div class="stat-bar"><div class="stat-fill" style="width:60%;"></div></div></div>
+              <div class="stat-row"><span>HEALTH</span><div class="stat-bar"><div class="stat-fill" style="width:100%;"></div></div></div>
+              <div class="stat-row"><span>POWER</span><div class="stat-bar"><div class="stat-fill" style="width:95%;"></div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ghost -->
+        <div class="character-card scroll-reveal" data-name="GHOST" data-role="QUANTUM STEALTH" data-passive="Phase Shift Dodge" data-ultimate="Chrono Freeze" data-avatar="🥷">
+          <div class="char-img-box">🥷</div>
+          <div class="char-info">
+            <div class="char-name">GHOST</div>
+            <div class="char-role">QUANTUM STEALTH</div>
+            <div class="stat-bar-group">
+              <div class="stat-row"><span>SPEED</span><div class="stat-bar"><div class="stat-fill" style="width:90%;"></div></div></div>
+              <div class="stat-row"><span>HEALTH</span><div class="stat-bar"><div class="stat-fill" style="width:75%;"></div></div></div>
+              <div class="stat-row"><span>POWER</span><div class="stat-bar"><div class="stat-fill" style="width:90%;"></div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nova -->
+        <div class="character-card scroll-reveal" data-name="NOVA" data-role="SOLAR MAGNETIST" data-passive="Credit Gravitation" data-ultimate="Supernova Pulse" data-avatar="🌟">
+          <div class="char-img-box">🌟</div>
+          <div class="char-info">
+            <div class="char-name">NOVA</div>
+            <div class="char-role">SOLAR MAGNETIST</div>
+            <div class="stat-bar-group">
+              <div class="stat-row"><span>SPEED</span><div class="stat-bar"><div class="stat-fill" style="width:80%;"></div></div></div>
+              <div class="stat-row"><span>HEALTH</span><div class="stat-bar"><div class="stat-fill" style="width:80%;"></div></div></div>
+              <div class="stat-row"><span>POWER</span><div class="stat-bar"><div class="stat-fill" style="width:95%;"></div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phoenix -->
+        <div class="character-card scroll-reveal" data-name="PHOENIX" data-role="THERMAL REBIRTH" data-passive="Emergency Resurrection" data-ultimate="Solar Eclipse Flare" data-avatar="🔥">
+          <div class="char-img-box">🔥</div>
+          <div class="char-info">
+            <div class="char-name">PHOENIX</div>
+            <div class="char-role">THERMAL REBIRTH</div>
+            <div class="stat-bar-group">
+              <div class="stat-row"><span>SPEED</span><div class="stat-bar"><div class="stat-fill" style="width:85%;"></div></div></div>
+              <div class="stat-row"><span>HEALTH</span><div class="stat-bar"><div class="stat-fill" style="width:85%;"></div></div></div>
+              <div class="stat-row"><span>POWER</span><div class="stat-bar"><div class="stat-fill" style="width:100%;"></div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Volt -->
+        <div class="character-card scroll-reveal" data-name="VOLT" data-role="VOLTAIC SURGE" data-passive="Capacitor Energy Overcharge" data-ultimate="Plasma Chain Lightning" data-avatar="⚡">
+          <div class="char-img-box">⚡</div>
+          <div class="char-info">
+            <div class="char-name">VOLT</div>
+            <div class="char-role">VOLTAIC SURGE</div>
+            <div class="stat-bar-group">
+              <div class="stat-row"><span>SPEED</span><div class="stat-bar"><div class="stat-fill" style="width:92%;"></div></div></div>
+              <div class="stat-row"><span>HEALTH</span><div class="stat-bar"><div class="stat-fill" style="width:70%;"></div></div></div>
+              <div class="stat-row"><span>POWER</span><div class="stat-bar"><div class="stat-fill" style="width:90%;"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHARACTER MODAL -->
+    <div id="character-modal">
+      <div class="modal-card">
+        <button id="modal-close-btn" class="modal-close-btn">✖</button>
+        <div style="display:flex; gap:24px; align-items:center;">
+          <div id="modal-char-avatar" style="font-size:5rem; background:rgba(0,243,255,0.1); border:2px solid var(--neon-cyan); border-radius:50%; width:110px; height:110px; display:flex; align-items:center; justify-content:center;">🧑‍🎤</div>
+          <div>
+            <div id="modal-char-name" style="font-family:var(--font-cyber); font-size:2rem; color:#fff;">VELOCITY</div>
+            <div id="modal-char-role" style="font-family:var(--font-mono); color:var(--neon-cyan);">SPEEDSTER</div>
+          </div>
+        </div>
+        <div style="margin-top:24px; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; font-family:var(--font-mono);">
+          <div style="margin-bottom:12px;"><span style="color:var(--neon-pink);">PASSIVE ABILITY:</span> <span id="modal-char-passive">Kinetic Momentum</span></div>
+          <div><span style="color:var(--neon-purple);">ULTIMATE ABILITY:</span> <span id="modal-char-ultimate">Time Dilation Surge</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 6: GAME WORLDS -->
+    <section id="worlds" class="landing-section">
+      <div class="section-header scroll-reveal">
+        <span class="section-tag">10 CYBER DISTRICTS</span>
+        <h2 class="section-title">EXPLORE THE WORLDS</h2>
+      </div>
+
+      <div class="worlds-grid">
+        <div class="world-card scroll-reveal">
+          <div class="world-stage-badge">STAGE 01</div>
+          <div class="world-title">ESCAPE FACILITY</div>
+          <div class="world-boss">BOSS: SENTINEL PRIME</div>
+        </div>
+        <div class="world-card scroll-reveal">
+          <div class="world-stage-badge">STAGE 02</div>
+          <div class="world-title">NEON STREETS</div>
+          <div class="world-boss">BOSS: CYBER VIPER</div>
+        </div>
+        <div class="world-card scroll-reveal">
+          <div class="world-stage-badge">STAGE 03</div>
+          <div class="world-title">CYBER MARKET</div>
+          <div class="world-boss">BOSS: MECHA SPIDER</div>
+        </div>
+        <div class="world-card scroll-reveal">
+          <div class="world-stage-badge">STAGE 10</div>
+          <div class="world-title">NEXUS FORTRESS</div>
+          <div class="world-boss">FINAL BOSS: NEXUS PRIME</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: LEADERBOARD -->
+    <section id="leaderboard" class="landing-section">
+      <div class="section-header scroll-reveal">
+        <span class="section-tag">GLOBAL RANKINGS</span>
+        <h2 class="section-title">HALL OF FAME LEADERBOARD</h2>
+      </div>
+
+      <div class="leaderboard-container scroll-reveal">
+        <div class="leaderboard-tabs">
+          <button class="lb-tab active">DAILY</button>
+          <button class="lb-tab">WEEKLY</button>
+          <button class="lb-tab">MONTHLY</button>
+          <button class="lb-tab">ALL-TIME</button>
+        </div>
+
+        <table class="lb-table">
+          <thead>
+            <tr>
+              <th>RANK</th>
+              <th>RUNNER OPERATIVE</th>
+              <th>SCORE</th>
+              <th>BEST DISTANCE</th>
+              <th>CREDITS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🥇 #1</td>
+              <td>CYBER_GHOST_99</td>
+              <td style="color:var(--neon-cyan);">984,500</td>
+              <td>12,450m</td>
+              <td>3,240</td>
+            </tr>
+            <tr>
+              <td>🥈 #2</td>
+              <td>NEXUS_BREACHER</td>
+              <td style="color:var(--neon-cyan);">850,200</td>
+              <td>10,120m</td>
+              <td>2,890</td>
+            </tr>
+            <tr>
+              <td>🥉 #3</td>
+              <td>Maddy (OPERATIVE)</td>
+              <td style="color:var(--neon-cyan);">720,100</td>
+              <td>8,940m</td>
+              <td>2,535</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 9: MULTIPLAYER -->
+    <section id="multiplayer" class="landing-section">
+      <div class="section-header scroll-reveal">
+        <span class="section-tag">2-PLAYER NETWORKING</span>
+        <h2 class="section-title">MULTIPLAYER & AI CO-OP</h2>
+      </div>
+
+      <div class="mp-showcase-grid scroll-reveal">
+        <canvas id="multiplayer-mesh-canvas"></canvas>
+        <div>
+          <h3 style="font-family:var(--font-cyber); font-size:1.8rem; color:#fff; margin-bottom:14px;">REAL-TIME SYNCHRONIZED RUNS</h3>
+          <p style="color:var(--text-dim); line-height:1.6; margin-bottom:20px;">Race side-by-side with friends in encrypted 6-digit rooms, or squad up with the autonomous Cyberbot AI companion to breach NEXUS city defenses together.</p>
+          <button class="cta-btn primary btn-launch-game">▶ START CO-OP MATCH</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 11: DEVELOPER PORTFOLIO -->
+    <section id="developer" class="landing-section">
+      <div class="section-header scroll-reveal">
+        <span class="section-tag">ENGINEERING BEHIND THE GAME</span>
+        <h2 class="section-title">ABOUT THE DEVELOPER</h2>
+      </div>
+
+      <div class="dev-profile-card scroll-reveal">
+        <div class="dev-header-box">
+          <div class="dev-avatar-img">👨‍💻</div>
+          <div>
+            <div class="dev-name">MADHAN KUMAR</div>
+            <div class="dev-roles">SOFTWARE ENGINEERING STUDENT | GAME & AI DEVELOPER</div>
+            <div class="dev-uni">🎓 VIT CHENNAI (Vellore Institute of Technology)</div>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-family:var(--font-cyber); font-size:1.1rem; color:#fff; margin-bottom:14px;">TECHNOLOGIES & STACK UTILIZED</div>
+          <div class="tech-badges-grid">
+            <span class="tech-badge">HTML5 CANVAS</span>
+            <span class="tech-badge">VANILLA CSS3</span>
+            <span class="tech-badge">JAVASCRIPT (ES6+)</span>
+            <span class="tech-badge">WEB AUDIO API</span>
+            <span class="tech-badge">NODE.JS</span>
+            <span class="tech-badge">EXPRESS</span>
+            <span class="tech-badge">SOCKET.IO</span>
+            <span class="tech-badge">MONGODB</span>
+            <span class="tech-badge">GIT & GITHUB</span>
+            <span class="tech-badge">VERCEL</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 13: LIVE STATS COUNTERS -->
+    <section class="landing-section">
+      <div class="stats-counter-grid">
+        <div class="stat-counter-card scroll-reveal">
+          <div class="counter-num" data-target="10">0+</div>
+          <div class="counter-label">CYBER DISTRICTS</div>
+        </div>
+        <div class="stat-counter-card scroll-reveal">
+          <div class="counter-num" data-target="6">0+</div>
+          <div class="counter-label">PLAYABLE RUNNERS</div>
+        </div>
+        <div class="stat-counter-card scroll-reveal">
+          <div class="counter-num" data-target="12">0+</div>
+          <div class="counter-label">MECH BOSSES</div>
+        </div>
+        <div class="stat-counter-card scroll-reveal">
+          <div class="counter-num" data-target="100">0+</div>
+          <div class="counter-label">ACHIEVEMENTS</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 15: FAQ ACCORDION -->
+    <section id="faq" class="landing-section">
+      <div class="section-header scroll-reveal">
+        <span class="section-tag">KNOWLEDGE BASE</span>
+        <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+      </div>
+
+      <div class="faq-list scroll-reveal">
+        <div class="faq-item">
+          <button class="faq-question">HOW DO I START PLAYING CYBER DASH? <span>+</span></button>
+          <div class="faq-answer">Click any "PLAY NOW" button on the website. The landing page will smoothly transition into the game terminal where you can enter Singleplayer, Campaign, or Multiplayer.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">IS MULTIPLAYER CO-OP FREE? <span>+</span></button>
+          <div class="faq-answer">Yes! You can host peer multiplayer rooms with 6-digit codes or play with Cyberbot AI directly in your browser.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">HOW DOES PROGRESS SAVE BACKUP WORK? <span>+</span></button>
+          <div class="faq-answer">Your campaign levels, high scores, credits, and skill tree unlocks auto-save to browser LocalStorage and back up to your registered user account.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="landing-footer">
+      <div style="font-family:var(--font-cyber); font-size:1.4rem; color:#fff; margin-bottom:12px;">CYBER DASH: GENESIS</div>
+      <p>© 2026 CYBER DASH INC. DEVELOPED BY MADHAN KUMAR (VIT CHENNAI). ALL RIGHTS RESERVED.</p>
+      <div class="footer-socials">
+        <a href="https://github.com" target="_blank">💻</a>
+        <a href="https://linkedin.com" target="_blank">🔗</a>
+        <a href="https://discord.com" target="_blank">💬</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <div id="game-container" style="display:none; visibility:hidden;">
+    <!-- The Game Rendering Canvas -->
+    <canvas id="game-canvas"></canvas>
+
+    <!-- ==================== HUD SCREEN ==================== -->
+    <div id="game-hud" class="hud-layer hidden">
+      <!-- Viewport Top XP Bar -->
+      <div style="position:absolute; top:0; left:0; width:100%; height:4px; background:rgba(0,0,0,0.5); z-index:99;">
+        <div id="hud-xp-bar-fill" style="width:0%; height:100%; background:var(--primary-cyan); box-shadow:0 0 10px var(--primary-cyan); transition:width 0.3s ease;"></div>
+      </div>
+      <!-- Top Left: Stats/Bars -->
+      <div class="hud-group top-left" style="display:flex; flex-direction:column; gap:8px;">
+        <!-- Player Mini Card -->
+        <div style="display:flex; align-items:center; gap:8px; background:rgba(10,10,24,0.6); padding:4px 8px; border-radius:3px; border:0.5px solid rgba(0,243,255,0.2);">
+          <span id="hud-profile-avatar" style="font-size:1.1rem;">🧑‍🎤</span>
+          <span id="hud-profile-name" style="font-family:var(--font-orbitron); font-size:0.75rem; font-weight:800; text-transform:uppercase;">RUNNER</span>
+          <span class="text-cyan" style="font-size:0.7rem; font-family:var(--font-mono);">L<span id="hud-profile-level">1</span></span>
+          <span id="hud-difficulty-badge" style="font-size:0.65rem; font-family:var(--font-orbitron); font-weight:bold; margin-left:auto; padding:1px 5px; border-radius:2px; background:var(--primary-cyan); color:#000;">MEDIUM</span>
+        </div>
+        
+        <div class="hud-bar-container">
+          <span class="hud-label">HP</span>
+          <!-- Dynamic Hearts HP -->
+          <div id="hud-hearts-container" class="hud-hp-hearts"></div>
+          <div class="hud-bar-bg" style="display:none;"><div id="hp-bar" class="hud-bar-fill hp-fill"></div></div>
+          <span id="hp-text" class="hud-val" style="margin-left:auto;">5/5</span>
+        </div>
+        <div class="hud-bar-container">
+          <span class="hud-label">ENG</span>
+          <div class="hud-bar-bg"><div id="energy-bar" class="hud-bar-fill energy-fill"></div></div>
+          <span id="energy-text" class="hud-val">100/100</span>
+        </div>
+        <div id="shield-indicator" class="hud-bar-container inactive">
+          <span class="hud-label cyan-glow">SHLD</span>
+          <div class="hud-bar-bg"><div id="shield-bar" class="hud-bar-fill shield-fill"></div></div>
+          <span id="shield-timer" class="hud-val">0.0s</span>
+        </div>
+      </div>
+
+      <!-- Center Notifications / Active Event -->
+      <div class="hud-group center-panel">
+        <div id="combo-container" class="hidden">
+          <div class="combo-title">COMBO</div>
+          <div id="combo-multiplier" class="combo-mult">x1.0</div>
+          <div class="combo-bar-bg"><div id="combo-bar" class="combo-bar-fill"></div></div>
+        </div>
+        <div id="event-banner" class="event-banner-hide">
+          <div id="event-title">SYSTEM ERROR</div>
+          <div id="event-desc">EMP DETECTED</div>
+        </div>
+        <!-- Boss Health Bar -->
+        <div id="boss-hud" class="hidden">
+          <div id="boss-name">SECURITY CHASSIS V4</div>
+          <div class="boss-bar-bg"><div id="boss-hp-bar" class="boss-hp-fill"></div></div>
+        </div>
+      </div>
+
+      <!-- Top Right: Score & Distance & Coins -->
+      <div class="hud-group top-right">
+        <div class="hud-stat"><span class="hud-label">SCORE</span><span id="hud-score" class="hud-val-large">000,000</span></div>
+        <div class="hud-stat"><span class="hud-label">DIST</span><span id="hud-distance" class="hud-val-large">0m</span></div>
+        <div class="hud-stat text-yellow"><span class="hud-label">CREDITS</span><span id="hud-coins" class="hud-val-large">0</span></div>
+        <div id="hud-mp-code" class="hud-stat text-cyan hidden"><span class="hud-label">ROOM</span><span id="hud-mp-code-val" class="hud-val-large">LOBBY</span></div>
+        <div id="hud-stage-display" class="hud-stat text-cyan hidden"><span class="hud-label">STAGE</span><span id="hud-stage-label" class="hud-val-large">1</span></div>
+      </div>
+
+
+      <!-- Bottom Right: Active Powerups Grid -->
+      <div id="active-powerups" class="powerups-hud-grid"></div>
+
+      <!-- Mobile Touch Controls Overlay -->
+      <div id="mobile-controls" class="hidden">
+        <div class="controls-left">
+          <button id="btn-left" class="ctrl-btn ctrl-dir">◀</button>
+          <button id="btn-right" class="ctrl-btn ctrl-dir">▶</button>
+        </div>
+        <div class="controls-right">
+          <button id="btn-slide" class="ctrl-btn">SLIDE</button>
+          <button id="btn-dash" class="ctrl-btn">DASH</button>
+          <button id="btn-jump" class="ctrl-btn">JUMP</button>
+        </div>
+      </div>
+      
+      <!-- Top Center Pause Button -->
+      <button id="hud-pause-btn" class="hud-btn-pause">PAUSE</button>
+    </div>
+
+    <!-- ==================== SCREEN OVERLAYS ==================== -->
+
+    <!-- Setup Profile Overlay -->
+    <div id="profile-setup-overlay" class="screen-overlay hidden" style="background:rgba(5,5,15,0.9);">
+      <div class="profile-setup-container">
+        <h2>Runner Profile Setup</h2>
+        <div class="form-group">
+          <label for="setup-player-name">Codename (3-15 chars, letters/numbers/underscore)</label>
+          <input type="text" id="setup-player-name" class="cyber-input" placeholder="RUNNER_NAME" maxlength="15">
+          <span id="setup-name-error" class="text-red hidden" style="font-size:11px; margin-top:5px; display:none; color:var(--primary-pink); font-family:var(--font-mono);">INVALID RUNNER CODENAME (alphanumeric & underscore only)</span>
+        </div>
+        <div class="form-group">
+          <label>Select Avatar</label>
+          <div class="avatar-grid" id="setup-avatar-grid">
+            <div class="avatar-option selected" data-avatar="avatar_1">🧑‍🎤</div>
+            <div class="avatar-option" data-avatar="avatar_2">🤖</div>
+            <div class="avatar-option" data-avatar="avatar_3">🕵️</div>
+            <div class="avatar-option" data-avatar="avatar_4">👾</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Select Suit Color</label>
+          <div class="color-picker-grid" id="setup-color-grid">
+            <div class="color-dot selected" data-color="#00ffff" style="background:#00ffff; color:#00ffff;"></div>
+            <div class="color-dot" data-color="#ff007f" style="background:#ff007f; color:#ff007f;"></div>
+            <div class="color-dot" data-color="#bd00ff" style="background:#bd00ff; color:#bd00ff;"></div>
+            <div class="color-dot" data-color="#00ff66" style="background:#00ff66; color:#00ff66;"></div>
+            <div class="color-dot" data-color="#ffcc00" style="background:#ffcc00; color:#ffcc00;"></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Select Starting Suit</label>
+          <div class="suit-grid" id="setup-suit-grid">
+            <div class="suit-option selected" data-suit="skin_default">GENESIS BASIC</div>
+            <div class="suit-option" data-suit="skin_neon_grid">NEON GRID</div>
+            <div class="suit-option" data-suit="skin_carbon">CARBON FIBER</div>
+          </div>
+        </div>
+        <button id="btn-setup-save" class="menu-btn primary-glow" style="margin-top:15px; width:100%;">INITIALIZE PROTOCOL</button>
+      </div>
+    </div>
+
+    <!-- Difficulty Selection Overlay -->
+    <div id="difficulty-select-menu" class="screen-overlay hidden">
+      <h1 class="game-logo" style="font-size:2.8rem; text-shadow:0 0 10px var(--primary-cyan); margin-bottom:10px;">SELECT THREAT LEVEL</h1>
+      <div class="difficulty-grid">
+        <div class="difficulty-card easy" data-difficulty="easy">
+          <div class="difficulty-badge">EASY</div>
+          <div class="difficulty-desc">Designed for newcomers. Slower enemy speeds, fewer obstacles, larger jump gaps, more frequent powerups, and extra checkpoints every 1000m. Start with 5 HP hearts.</div>
+          <div class="difficulty-mults">
+            <span>COIN MULTIPLIER: x1.0</span>
+            <span>XP MULTIPLIER: x1.0</span>
+          </div>
+        </div>
+        <div class="difficulty-card medium selected" data-difficulty="medium">
+          <div class="difficulty-badge">MEDIUM</div>
+          <div class="difficulty-desc">Balanced gameplay. Standard threat frequencies, normal speed scaling, and standard checkpoint recovery rules. Start with 3 HP hearts.</div>
+          <div class="difficulty-mults">
+            <span>COIN MULTIPLIER: x1.5</span>
+            <span>XP MULTIPLIER: x1.5</span>
+          </div>
+        </div>
+        <div class="difficulty-card hard" data-difficulty="hard">
+          <div class="difficulty-badge">HARD</div>
+          <div class="difficulty-desc">Designed for veterans. High speed limits, frequent hazard spawns, micro jump gaps, moving barriers, and aggressive security drones. Start with 2 HP hearts.</div>
+          <div class="difficulty-mults">
+            <span>COIN MULTIPLIER: x2.0</span>
+            <span>XP MULTIPLIER: x2.0</span>
+          </div>
+        </div>
+      </div>
+      <div class="button-row" style="margin-top:40px; display:flex; gap:15px;">
+        <button id="btn-difficulty-back" class="menu-btn secondary-glow">BACK</button>
+        <button id="btn-difficulty-start" class="menu-btn primary-glow">DECRYPT SECTOR</button>
+      </div>
+    </div>
+
+    <!-- Main Menu Overlay -->
+    <div id="main-menu" class="screen-overlay hidden">
+      <div class="menu-decor top"></div>
+      <div class="menu-decor bottom"></div>
+      
+      <div class="logo-wrapper">
+        <h1 class="game-logo glitch" data-text="CYBER DASH">CYBER DASH</h1>
+        <div class="logo-sub">SECURE SYSTEM BREACH IN PROGRESS</div>
+      </div>
+
+      <!-- Player Profile Top Bar -->
+      <div class="best-score-badge lobby-profile-card">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <span id="menu-profile-avatar" class="lobby-avatar-glow">🧑‍🎤</span>
+          <div style="text-align:left;">
+            <div id="menu-profile-name" class="lobby-uname-text">RUNNER</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono); font-weight:bold;">LEVEL <span id="menu-profile-level" style="color:var(--primary-purple);">1</span> OPERATIVE</div>
+          </div>
+        </div>
+        <div style="flex-grow:1; margin:0 25px; max-width:320px; display:flex; flex-direction:column; gap:4px;">
+          <div style="display:flex; justify-content:space-between; font-size:0.7rem; font-family:var(--font-mono); color:var(--text-muted);">
+            <span>XP PROGRESSION</span>
+            <span id="menu-profile-xp-text">0/100 XP</span>
+          </div>
+          <div class="hud-bar-bg" style="height:8px; border:1px solid var(--primary-purple); border-radius:4px;"><div id="menu-profile-xp-bar" class="hud-bar-fill" style="width:0%; background:linear-gradient(90deg, var(--primary-cyan), var(--primary-purple)); box-shadow:0 0 10px var(--primary-cyan);"></div></div>
+        </div>
+        <div style="text-align:right; font-family:var(--font-orbitron); font-size:0.8rem; line-height:1.4; display:flex; flex-direction:column; align-items:flex-end; gap:6px;">
+          <div>BEST: <span id="menu-best-dist" style="color:var(--primary-cyan); font-weight:bold;">0m</span> | CREDITS: <span id="menu-credits-count" class="text-yellow" style="font-weight:bold;">0</span></div>
+          <button id="btn-menu-account" class="menu-btn secondary-glow" style="padding:5px 14px; font-size:0.7rem; margin:0; line-height:1; letter-spacing:1px; border-radius:4px;">🔑 LOGIN / ACCOUNT BACKUP</button>
+        </div>
+      </div>
+
+      <!-- 3 Sleek High-Tech Cyberpunk Deck Cards -->
+      <div class="lobby-decks-grid">
+        <!-- Deck 1: OPERATIONS -->
+        <div class="lobby-deck-card primary">
+          <div class="deck-header">
+            <span class="deck-icon">⚡</span>
+            <span class="deck-title">OPERATIONS</span>
+          </div>
+          <div class="deck-buttons">
+            <button id="btn-start" class="menu-btn primary-glow">▶ PLAY SINGLEPLAYER</button>
+            <button id="btn-story-mode" class="menu-btn campaign-launch-btn">🗺 STORY CAMPAIGN</button>
+            <button id="btn-mp" class="menu-btn secondary-glow">⚔️ PLAY WITH FRIEND</button>
+          </div>
+        </div>
+
+        <!-- Deck 2: ARSENAL & UPGRADES -->
+        <div class="lobby-deck-card purple">
+          <div class="deck-header">
+            <span class="deck-icon">⚔️</span>
+            <span class="deck-title">ARSENAL & UPGRADES</span>
+          </div>
+          <div class="deck-buttons">
+            <button id="btn-hq" class="menu-btn">▶ HQ BLUEPRINTS</button>
+            <button id="btn-skilltree" class="menu-btn">▶ SKILL TREE</button>
+            <button id="btn-customization" class="menu-btn">▶ CYBER STORE</button>
+            <button id="btn-customs-gear" class="menu-btn">▶ EQUIP GEAR</button>
+            <button id="btn-companions" class="menu-btn">▶ COMPANIONS</button>
+          </div>
+        </div>
+
+        <!-- Deck 3: SYSTEM DECK -->
+        <div class="lobby-deck-card dark">
+          <div class="deck-header">
+            <span class="deck-icon">📡</span>
+            <span class="deck-title">SYSTEM DECK</span>
+          </div>
+          <div class="deck-buttons">
+            <button id="btn-howtoplay" class="menu-btn">▶ HOW TO PLAY</button>
+            <button id="btn-achievements" class="menu-btn">▶ ACHIEVEMENTS</button>
+            <button id="btn-statistics" class="menu-btn">▶ CORE LOGS</button>
+            <button id="btn-settings" class="menu-btn">▶ SETTINGS</button>
+            <button id="btn-credits" class="menu-btn">▶ CREDITS</button>
+            <button id="btn-return-landing" onclick="if(window.landingPage) window.landingPage.returnToLandingPage()" class="menu-btn primary-glow" style="border-color:var(--primary-cyan); color:var(--primary-cyan);">🏠 BACK TO WEBSITE</button>
+            <button id="btn-about-dev" class="menu-btn warning-glow">▶ ABOUT DEV</button>
+            <button id="btn-exit" class="menu-btn error-glow">✖ EXIT EMULATION</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="daily-missions-box lobby-daily-card">
+        <h3 class="panel-subtitle">⚡ DAILY INSTRUCTIONS</h3>
+        <div id="daily-missions-list">
+          <!-- Dynamically populated daily missions -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== CO-OP MODE SELECT OVERLAY ==================== -->
+    <div id="coop-mode-select-overlay" class="screen-overlay hidden">
+      <div class="coop-select-card">
+        <div class="coop-header">
+          <h2 class="coop-title">⚔️ CO-OP & MULTIPLAYER PROTOCOLS</h2>
+          <p class="coop-subtitle">Select your co-op deployment mode</p>
+          <button id="btn-coop-close" class="wm-close-btn">✕</button>
+        </div>
+
+        <div class="coop-grid">
+          <!-- Option A: AI Co-Op -->
+          <div class="coop-option-card ai" id="card-mode-ai">
+            <div class="coop-card-icon">🤖</div>
+            <h3 class="coop-card-title">PLAY WITH CYBERBOT AI</h3>
+            <p class="coop-card-desc">Partner with an autonomous AI Runner. Scans obstacles, dodges laser nets, slides under barriers, and assists in combat!</p>
+            <div class="coop-card-tag text-green">⚡ INSTANT DEPLOYMENT</div>
+            <button id="btn-launch-ai" class="menu-btn primary-glow">▶ LAUNCH AI CO-OP</button>
+          </div>
+
+          <!-- Option B: Human Multiplayer -->
+          <div class="coop-option-card mp" id="card-mode-mp">
+            <div class="coop-card-icon">👥</div>
+            <h3 class="coop-card-title">MULTIPLAYER LOBBY ROOM</h3>
+            <p class="coop-card-desc">Host or Join an encrypted 6-digit room. Compete or co-op with a real human runner over peer link.</p>
+            <div class="coop-card-tag text-pink">🔒 BOTH PLAYERS REQUIRED</div>
+            <button id="btn-launch-mp" class="menu-btn secondary-glow">🌐 ENTER LOBBY ROOM</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- System Configuration (Settings) -->
+    <div id="settings-menu" class="screen-overlay hidden">
+      <div class="menu-panel">
+        <h2 class="panel-title">SYSTEM CONFIGURATION</h2>
+        <div class="panel-content scrollable">
+          <h3 class="panel-subtitle" style="margin-top:0;">RUNNER PROFILE</h3>
+          <div class="setting-item" style="flex-direction:column; align-items:stretch;">
+            <div class="profile-edit-grid">
+              <div style="display:flex; flex-direction:column; gap:6px;">
+                <label for="edit-player-name">CODENAME</label>
+                <input type="text" id="edit-player-name" class="cyber-input" placeholder="RUNNER" maxlength="15">
+              </div>
+              <div style="display:flex; flex-direction:column; gap:6px;">
+                <label>AVATAR</label>
+                <div class="avatar-grid" id="edit-avatar-grid">
+                  <div class="avatar-option" data-avatar="avatar_1">🧑‍🎤</div>
+                  <div class="avatar-option" data-avatar="avatar_2">🤖</div>
+                  <div class="avatar-option" data-avatar="avatar_3">🕵️</div>
+                  <div class="avatar-option" data-avatar="avatar_4">👾</div>
+                </div>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:6px;">
+                <label>COLOR SIGNATURE</label>
+                <div class="color-picker-grid" id="edit-color-grid">
+                  <div class="color-dot" data-color="#00ffff" style="background:#00ffff; color:#00ffff;"></div>
+                  <div class="color-dot" data-color="#ff007f" style="background:#ff007f; color:#ff007f;"></div>
+                  <div class="color-dot" data-color="#bd00ff" style="background:#bd00ff; color:#bd00ff;"></div>
+                  <div class="color-dot" data-color="#00ff66" style="background:#00ff66; color:#00ff66;"></div>
+                  <div class="color-dot" data-color="#ffcc00" style="background:#ffcc00; color:#ffcc00;"></div>
+                </div>
+              </div>
+              <button id="btn-save-settings-profile" class="menu-btn primary-glow btn-sm" style="margin-top:10px;">COMMIT CHANGES</button>
+            </div>
+          </div>
+          <h3 class="panel-subtitle" style="margin-top:20px;">SYSTEM OPTIONS</h3>
+          <div class="setting-item">
+            <label for="slider-music">SYNTH MUSIC VOLUME</label>
+            <input type="range" id="slider-music" min="0" max="100" value="70">
+            <span id="val-music">70%</span>
+          </div>
+          <div class="setting-item">
+            <label for="slider-sfx">AUDIO SFX VOLUME</label>
+            <input type="range" id="slider-sfx" min="0" max="100" value="80">
+            <span id="val-sfx">80%</span>
+          </div>
+          <div class="setting-item">
+            <label for="select-graphics">VISUAL QUALITY</label>
+            <select id="select-graphics">
+              <option value="high">ULTRA NEON (BLOOM ON)</option>
+              <option value="medium" selected>STANDARD (BLOOM REDUCED)</option>
+              <option value="low">PERFORMANCE (BLOOM OFF)</option>
+            </select>
+          </div>
+          <div class="setting-item">
+            <label for="select-difficulty">THREAT LEVEL (DIFFICULTY)</label>
+            <select id="select-difficulty">
+              <option value="easy">SECURE (EASY)</option>
+              <option value="medium" selected>INTRUSION (NORMAL)</option>
+              <option value="hard">OVERLOAD (HARD)</option>
+            </select>
+          </div>
+          <div class="setting-item">
+            <label>DISPLAY SYSTEM</label>
+            <button id="btn-fullscreen" class="menu-btn btn-sm">TOGGLE FULLSCREEN</button>
+          </div>
+          <div class="setting-item">
+            <label>CORE CACHE</label>
+            <button id="btn-reset-data" class="menu-btn btn-sm warning-glow">PURGE MEMORY (RESET SAVE)</button>
+          </div>
+        </div>
+        <button id="btn-settings-back" class="menu-btn primary-glow">RETURN TO TERMINAL</button>
+      </div>
+    </div>
+
+    <!-- Cyber Store (Customization Skins & Trails) -->
+    <div id="customization-menu" class="screen-overlay hidden">
+      <div class="menu-panel wide">
+        <h2 class="panel-title">CYBERSTORE INTERFACE</h2>
+        <div class="store-credits">
+          CREDITS: <span id="store-credits-count" class="text-yellow">0</span>
+        </div>
+        
+        <div class="store-tabs">
+          <button id="tab-skins" class="tab-btn active">SHELL ARCHITECTURES (SKINS)</button>
+          <button id="tab-trails" class="tab-btn">THRUSTER WAKES (TRAILS)</button>
+        </div>
+
+        <div class="panel-content store-grid" id="store-items-container">
+          <!-- Dynamically populated shop items -->
+        </div>
+
+        <button id="btn-store-back" class="menu-btn primary-glow">RETURN TO TERMINAL</button>
+      </div>
+    </div>
+
+    <!-- Data File (How To Play) -->
+    <div id="howtoplay-menu" class="screen-overlay hidden">
+      <div class="menu-panel">
+        <h2 class="panel-title">TRANSMISSION ENCRYPTED: RUN INSTRUCTIONS</h2>
+        <div class="panel-content scrollable text-left instruction-panel">
+          <h3>CONTROLS</h3>
+          <p><strong>MOVE LEFT:</strong> <kbd>A</kbd> or <kbd>◀ Arrow</kbd></p>
+          <p><strong>MOVE RIGHT:</strong> <kbd>D</kbd> or <kbd>▶ Arrow</kbd></p>
+          <p><strong>JUMP:</strong> <kbd>SPACEBAR</kbd> (Press again in mid-air to <strong>DOUBLE JUMP</strong>)</p>
+          <p><strong>SLIDE:</strong> <kbd>S</kbd> or <kbd>▼ Arrow</kbd> (Compress chassis to slip under energy grids)</p>
+          <p><strong>NEON DASH:</strong> <kbd>SHIFT</kbd> (Invincible burst forward, breaks obstacles, short recharge)</p>
+          <p><strong>PAUSE SYSTEM:</strong> <kbd>ESC</kbd></p>
+          <br>
+          <h3>UPGRADES (POWERUPS)</h3>
+          <p><span class="cyan-glow">■ SHIELD:</span> Absorbs a single collision.</p>
+          <p><span class="yellow-glow">■ COIN MAGNET:</span> Automatically draws credits in proximity.</p>
+          <p><span class="blue-glow">■ SLOW MOTION:</span> Dilates time-stream for micro-adjustments.</p>
+          <p><span class="green-glow">■ SPEED BOOST:</span> Activates overload thrusters, grants invincibility, flies forward.</p>
+          <p><span class="pink-glow">■ DOUBLE COINS:</span> Multiplies all credit nodes gathered.</p>
+          <p><span class="red-glow">■ EXTRA LIFE:</span> Automatically restores player once on fatal error.</p>
+          <br>
+          <h3>THREAT MATRIX</h3>
+          <p>Dodge laser grids, moving security sentries, floor mines, and rotating plasma blades. Speed scaling increases danger over time.</p>
+          <p>Be prepared for <strong>BOSS BATTLES</strong> every 2000m. Keep your combo high by narrowly dodging obstacles to maximize score yields!</p>
+        </div>
+        <button id="btn-howtoplay-back" class="menu-btn primary-glow">RETURN TO TERMINAL</button>
+      </div>
+    </div>
+
+    <!-- Achievements Panel -->
+    <div id="achievements-menu" class="screen-overlay hidden">
+      <div class="menu-panel">
+        <h2 class="panel-title">SYSTEM SECURE: ACHIEVEMENTS</h2>
+        <div class="panel-content scrollable" id="achievements-list">
+          <!-- Dynamically populated achievements list -->
+        </div>
+        <button id="btn-achievements-back" class="menu-btn primary-glow">RETURN TO TERMINAL</button>
+      </div>
+    </div>
+
+    <!-- Core Logs (Statistics) -->
+    <div id="statistics-menu" class="screen-overlay hidden">
+      <div class="menu-panel">
+        <h2 class="panel-title">DIAGNOSTIC SYSTEM LOGS</h2>
+        <div class="panel-content scrollable text-left stats-panel">
+          <!-- Profile Card -->
+          <div style="display:flex; align-items:center; gap:20px; border-bottom:1px solid rgba(189,0,255,0.3); padding-bottom:15px; margin-bottom:15px;">
+            <span id="stat-profile-avatar" style="font-size:3.5rem; filter:drop-shadow(0 0 10px var(--primary-cyan));">🧑‍🎤</span>
+            <div style="flex-grow:1;">
+              <div id="stat-profile-name" style="font-family:var(--font-orbitron); font-size:1.6rem; font-weight:900; color:#fff; text-shadow:0 0 10px var(--primary-cyan); line-height:1.2;">RUNNER</div>
+              <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted); margin-top:4px;">
+                LEVEL <span id="stat-profile-level" style="color:var(--primary-purple); font-weight:bold;">1</span> 
+                (<span id="stat-profile-xp">0/100</span> XP)
+              </div>
+            </div>
+            <div style="text-align:right;">
+              <div class="hud-label">FAVORITE THREAT</div>
+              <div id="stat-favorite-difficulty" style="font-family:var(--font-orbitron); font-weight:bold; color:var(--primary-cyan);">MEDIUM</div>
+            </div>
+          </div>
+          <div class="stat-row"><span>Total Core Runs:</span><span id="stat-total-runs">0</span></div>
+          <div class="stat-row"><span>Longest Penetration (Max Dist):</span><span id="stat-best-dist">0m</span></div>
+          <div class="stat-row"><span>Credits Extracted:</span><span id="stat-total-coins">0</span></div>
+          <div class="stat-row"><span>Running Duration:</span><span id="stat-play-time">0s</span></div>
+          <div class="stat-row"><span>Thrust Jumps Executed:</span><span id="stat-jumps">0</span></div>
+          <div class="stat-row"><span>Core Overload Dashes:</span><span id="stat-dashes">0</span></div>
+          <div class="stat-row"><span>Chassis slides:</span><span id="stat-slides">0</span></div>
+          <div class="stat-row"><span>Threats Terminated (Bosses Defeated):</span><span id="stat-bosses">0</span></div>
+          <div class="stat-row"><span>Grid Accomplishments Unlocked:</span><span id="stat-achievements">0/9</span></div>
+        </div>
+        <button id="btn-statistics-back" class="menu-btn primary-glow">RETURN TO TERMINAL</button>
+      </div>
+    </div>
+
+    <!-- Maintainers (Credits) -->
+    <div id="credits-menu" class="screen-overlay hidden">
+      <div class="menu-panel">
+        <h2 class="panel-title">BREACH TEAM & CREDITS</h2>
+        <div class="panel-content scrollable text-center credits-panel">
+          <h3 class="cyan-glow">CYBER DASH - VERSION 1.0.0</h3>
+          <p>A Premium Synthwave Arcade Runner</p>
+          <br>
+          <div class="credits-role">PROJECT ARCHITECT</div>
+          <p class="credits-name">ANTIGRAVITY AI</p>
+          
+          <div class="credits-role">SOUNDTRACK & SFX ENGINE</div>
+          <p class="credits-name">WEB AUDIO SYNTH ENGINE v1</p>
+          
+          <div class="credits-role">ENGINEERING PLATFORM</div>
+          <p class="credits-name">HTML5 CANVAS / VANILLA JS</p>
+          
+          <div class="credits-role">DEDICATION</div>
+          <p>To retro arcade runners, glitch aesthetics, and neon-filled cyberpunk horizons.</p>
+        </div>
+        <button id="btn-credits-back" class="menu-btn primary-glow">RETURN TO TERMINAL</button>
+      </div>
+    </div>
+
+    <!-- Pause System Overlay -->
+    <div id="pause-overlay" class="screen-overlay hidden">
+      <div class="menu-panel small-panel">
+        <h2 class="panel-title glitch" data-text="SYSTEM PAUSED">SYSTEM PAUSED</h2>
+        <div style="font-family:var(--font-orbitron); font-size:0.8rem; color:var(--primary-cyan); text-shadow:0 0 5px var(--primary-cyan); margin-top:-10px; margin-bottom:15px; text-transform:uppercase;">
+          RUNNER: <span id="pause-profile-name" style="color:#fff;">RUNNER</span> [L<span id="pause-profile-level">1</span>]
+        </div>
+        <div class="menu-options vertical">
+          <button id="btn-resume" class="menu-btn primary-glow">RESUME EMULATION</button>
+          <button id="btn-pause-settings" class="menu-btn">SYSTEM CONFIG</button>
+          <button id="btn-pause-restart" class="menu-btn warning-glow">RESTART SIMULATION</button>
+          <button id="btn-pause-main" class="menu-btn">ABORT MISSION (MAIN MENU)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="gameover-menu" class="screen-overlay hidden">
+      <div class="menu-decor top error-decor"></div>
+      <div class="menu-decor bottom error-decor"></div>
+      
+      <div class="menu-panel wide">
+        <h1 class="game-logo error-glitch" data-text="CONNECTION TERMINATED">CONNECTION TERMINATED</h1>
+        <div class="logo-sub text-red">RUNNER CHASSIS DETECTED: <span id="go-profile-name" style="font-weight:bold; color:#fff; text-shadow:0 0 5px var(--primary-pink);">RUNNER</span></div>
+
+        <div class="gameover-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; width: 100%; margin-bottom: 20px;">
+          <div class="gameover-card">
+            <span class="card-label">DISTANCE COMPLETED</span>
+            <span id="go-distance" class="card-val cyan-glow">0m</span>
+          </div>
+          <div class="gameover-card">
+            <span class="card-label">CREDITS ACQUIRED</span>
+            <span id="go-coins" class="card-val text-yellow">0</span>
+          </div>
+          <div class="gameover-card">
+            <span class="card-label">TOTAL SCORE ACCUMULATED</span>
+            <span id="go-score" class="card-val pink-glow">0</span>
+          </div>
+          <div class="gameover-card">
+            <span class="card-label">BEST HIGH SCORE</span>
+            <span id="go-highscore" class="card-val yellow-glow">0</span>
+          </div>
+        </div>
+
+        <div id="go-achievements-unlocked" class="go-achievement-badge hidden">
+          <!-- Filled dynamically with new achievements unlocked this run -->
+        </div>
+
+        <div class="menu-options horizontal">
+          <button id="btn-go-retry" class="menu-btn primary-glow">INITIATE RE-ENTRY</button>
+          <button id="btn-go-replay" class="menu-btn secondary-glow">REPLAY CORE SEQUENCE</button>
+          <button id="btn-go-photo" class="menu-btn green-glow">PHOTO RECORD MODE</button>
+          <button id="btn-go-share" class="menu-btn">TRANSMIT DECRYPTION (SHARE SCORE)</button>
+          <button id="btn-go-main" class="menu-btn">RETURN TO MENU</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Replay System Player Overlay -->
+    <div id="replay-overlay" class="screen-overlay hidden">
+      <div class="replay-hud">
+        <span class="replay-badge glitch" data-text="LOG REPLAY MODE">LOG REPLAY MODE</span>
+        <button id="btn-replay-close" class="hud-btn-close">EXIT REPLAY</button>
+      </div>
+      <div class="replay-controls">
+        <span class="hud-label">RUN LOG BUFFER: ACTIVE</span>
+      </div>
+    </div>
+
+    <!-- Photo Mode Control Overlay -->
+    <div id="photo-overlay" class="screen-overlay hidden">
+      <div class="photo-controls-panel">
+        <h3 class="panel-subtitle cyan-glow" style="margin-bottom:15px;">PHOTO CAPTURE CONTROLLER</h3>
+        
+        <div class="setting-item">
+          <label for="photo-filter">POST-PROCESS ENCODER</label>
+          <select id="photo-filter">
+            <option value="none">STANDARD RESOLUTION (NONE)</option>
+            <option value="neon">NEON INTENSITY (BLOOM BOOST)</option>
+            <option value="crt">ANALOG DECAY (CRT GRID)</option>
+            <option value="vhs">TAPE DEGRADATION (VHS GLITCH)</option>
+            <option value="monochrome">LOG BINARY (MONOCHROME)</option>
+            <option value="glitch">BUFFER ERR (HARD GLITCH)</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label for="photo-zoom">IMAGER CAMERA ZOOM</label>
+          <input type="range" id="photo-zoom" min="50" max="200" value="100">
+          <span id="val-photo-zoom">1.0x</span>
+        </div>
+
+        <div class="setting-item">
+          <label for="photo-pan-y">CAMERA HEIGHT OFFSET</label>
+          <input type="range" id="photo-pan-y" min="-100" max="100" value="0">
+          <span id="val-photo-pan">0px</span>
+        </div>
+
+        <div class="setting-item">
+          <label for="photo-hud">RENDER HUD OVERLAY</label>
+          <input type="checkbox" id="photo-hud-toggle" checked style="width: 20px; height: 20px;">
+        </div>
+
+        <div class="photo-actions">
+          <button id="btn-photo-capture" class="menu-btn primary-glow btn-sm">CAPTURE DATA (SAVE)</button>
+          <button id="btn-photo-exit" class="menu-btn warning-glow btn-sm">ABORT CAPTURE</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== RPG HEADQUARTERS BLUEPRINTS ==================== -->
+    <div id="hq-menu" class="screen-overlay hidden">
+      <div class="menu-panel wide">
+        <h2 class="panel-title">GENESIS HQ INTERFACE</h2>
+        <div class="store-credits">
+          HQ RATING: <span id="hq-rating-val" class="cyan-glow">LEVEL 1</span> | CORE CELLS: <span id="hq-cells-count" class="text-yellow">0</span>
+        </div>
+        
+        <div class="panel-content store-grid" id="hq-rooms-container">
+          <!-- Room 1: Research Lab -->
+          <div class="store-item-card" id="hq-room-research">
+            <div class="store-preview-icon" style="background:#111a28; border:2px solid var(--primary-cyan); display:flex; align-items:center; justify-content:center; font-size:24px;">🔬</div>
+            <div class="store-item-title">RESEARCH LABORATORY</div>
+            <div class="store-item-desc" id="hq-desc-research">Level 1: Unlocks basic diagnostic scans. Boosts XP gains by 5%.</div>
+            <button class="store-buy-btn" id="btn-upgrade-research">UPGRADE [150 CR]</button>
+          </div>
+          <!-- Room 2: Drone Bay -->
+          <div class="store-item-card" id="hq-room-drones">
+            <div class="store-preview-icon" style="background:#111a28; border:2px solid var(--primary-purple); display:flex; align-items:center; justify-content:center; font-size:24px;">🛸</div>
+            <div class="store-item-title">DRONE DOCK BAY</div>
+            <div class="store-item-desc" id="hq-desc-drones">Level 1: AI companion holds basic collectors. Pulls coins +10% closer.</div>
+            <button class="store-buy-btn" id="btn-upgrade-drones">UPGRADE [200 CR]</button>
+          </div>
+          <!-- Room 3: Weapon Workshop -->
+          <div class="store-item-card" id="hq-room-workshop">
+            <div class="store-preview-icon" style="background:#111a28; border:2px solid var(--primary-pink); display:flex; align-items:center; justify-content:center; font-size:24px;">⚔️</div>
+            <div class="store-item-title">WEAPON WORKSHOP</div>
+            <div class="store-item-desc" id="hq-desc-workshop">Level 1: Calibrates blade damage. Weapons deal +5% base damage.</div>
+            <button class="store-buy-btn" id="btn-upgrade-workshop">UPGRADE [250 CR]</button>
+          </div>
+        </div>
+
+        <button id="btn-hq-back" class="menu-btn primary-glow">RETURN TO TERMINAL</button>
+      </div>
+    </div>
+
+    <!-- ==================== SKILL TREE OVERLAY ==================== -->
+    <div id="skilltree-menu" class="screen-overlay hidden">
+      <div class="menu-panel wide">
+        <h2 class="panel-title">GENESIS CORE SKILLS</h2>
+        <div class="store-credits">
+          AVAILABLE SKILL POINTS: <span id="skill-points-val" class="cyan-glow">0</span> | LEVEL: <span id="player-level-val" class="pink-glow">1</span>
+        </div>
+
+        <div class="store-tabs">
+          <button id="tab-skills-combat" class="tab-btn active">COMBAT PATH</button>
+          <button id="tab-skills-movement" class="tab-btn">MOVEMENT PATH</button>
+          <button id="tab-skills-tech" class="tab-btn">TECHNOLOGY PATH</button>
+        </div>
+
+        <div class="panel-content store-grid" id="skills-container">
+          <!-- Dynamically populated skill node cards -->
+        </div>
+
+        <button id="btn-skilltree-back" class="menu-btn primary-glow">RETURN TO TERMINAL</button>
+      </div>
+    </div>
+
+    <!-- ==================== EQUIP GEAR CUSTOMIZER ==================== -->
+    <div id="customs-gear-menu" class="screen-overlay hidden">
+      <div class="menu-panel wide">
+        <h2 class="panel-title">GENESIS ARMAMENT CHASSIS</h2>
+        <div class="store-credits">
+          CUSTOMIZE ACTIVE EQUIPMENT SLOTS
+        </div>
+
+        <div class="store-tabs">
+          <button id="tab-gear-helmet" class="tab-btn active">HELMET</button>
+          <button id="tab-gear-armor" class="tab-btn">CHEST SUIT</button>
+          <button id="tab-gear-weapon" class="tab-btn">WEAPONRY</button>
+        </div>
+
+        <div class="panel-content store-grid" id="gear-items-container">
+          <!-- Dynamically populated equipment slots -->
+        </div>
+
+        <button id="btn-customs-gear-back" class="menu-btn primary-glow">RETURN TO TERMINAL</button>
+      </div>
+    </div>
+
+    <!-- ==================== STORY MODE MENU ==================== -->
+    <div id="story-menu" class="screen-overlay hidden">
+      <div class="menu-panel">
+        <h2 class="panel-title">NEXUS BREACH INSTRUCTIONS</h2>
+        <div class="panel-content scrollable" id="story-chapters-list">
+          <!-- Dynamically populated story chapter slots -->
+        </div>
+        <button id="btn-story-back" class="menu-btn primary-glow">RETURN TO TERMINAL</button>
+      </div>
+    </div>
+
+    <!-- ==================== CINEMATIC DIALOGUE OVERLAY ==================== -->
+    <div id="story-dialogue-overlay" class="screen-overlay hidden" style="background-color: rgba(3, 3, 12, 0.95);">
+      <div class="menu-panel" style="width:650px; height:auto; justify-content:space-between; padding:35px; border-color:var(--primary-cyan);">
+        <h3 id="story-speaker-name" class="cyan-glow" style="font-family:var(--font-cyber); letter-spacing:3px; margin-bottom:15px; width:100%; text-align:left;"></h3>
+        <p id="story-dialogue-text" style="font-family:var(--font-body); font-size:1.15rem; line-height:1.6; text-align:left; flex-grow:1; width:100%; min-height:80px; margin-bottom:30px;"></p>
+        
+        <div class="menu-options vertical" style="width:100%;" id="story-choices-container">
+          <button id="btn-story-next" class="menu-btn primary-glow" style="width:100%;">CONTINUE CORRUPTION DECRYPT</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== COMPANIONS & PETS DECK ==================== -->
+    <div id="companions-menu" class="screen-overlay hidden">
+      <div class="menu-panel wide">
+        <h2 class="panel-title">GENESIS DRONES & PETS DECK</h2>
+        <div class="store-tabs">
+          <button id="tab-companions-drones" class="tab-btn active">AI SECURITY DRONES</button>
+          <button id="tab-companions-pets" class="tab-btn">CYBER PETS</button>
+        </div>
+
+        <div class="panel-content store-grid" id="companions-grid-container">
+          <!-- Dynamically populated companions and pets -->
+        </div>
+
+        <button id="btn-companions-back" class="menu-btn primary-glow">RETURN TO TERMINAL</button>
+      </div>
+    </div>
+
+    <!-- ==================== ABOUT DEVELOPER SCREEN ==================== -->
+    <div id="about-menu" class="screen-overlay hidden">
+      <div class="menu-panel wide">
+        <h2 class="panel-title">MAINTAINER BRIEF: ABOUT DEVELOPER</h2>
+        <div class="panel-content scrollable text-left instruction-panel" style="font-size:0.9rem;">
+          <h3 class="cyan-glow">ENGINEERING OVERVIEW</h3>
+          <p>This web application showcases high-performance 2D canvas drawing techniques, custom programmatic sound wave synthesis, and complex state management using vanilla JavaScript. No heavy images or external audio assets are loaded, maintaining immediate loading speed and a stable 60 FPS profile.</p>
+          <br>
+          <h3 class="pink-glow">ARCHITECTURE CHOICES</h3>
+          <p><strong>FSM State Engine:</strong> Distinct state loops separate Menu, Gameplay, Replay playback, and Photo capture vectors.</p>
+          <p><strong>Dynamic Spawning:</strong> Procedural obstacle layout intervals decrease dynamically based on current run distance, and check for elevation gap jumps.</p>
+          <p><strong>Synthetic Audio:</strong> The Web Audio API operates as a static sound wave scheduler, building basslines, hi-hat sweeps, and explosive filter sweeps on beat sequences.</p>
+          <br>
+          <h3 class="yellow-glow">PERFORMANCE OPTIMIZATION</h3>
+          <p><strong>Rendering Buffers:</strong> Multi-layered graphics rendering limits shadow blurs to high quality modes, ensuring mobile devices can play smoothly. Particles utilize a static recycle object pool to prevent browser memory leaks during runs.</p>
+        </div>
+        <button id="btn-about-back" class="menu-btn primary-glow">RETURN TO TERMINAL</button>
+      </div>
+    </div>
+
+    <!-- ==================== PORTFOLIO DEVELOPER MODE PANEL ==================== -->
+    <div id="dev-panel" class="hidden" style="position:absolute; top:20px; left:20px; z-index:9000; background:rgba(9,9,24,0.92); border:1px solid var(--primary-cyan); padding:15px; border-radius:6px; font-family:var(--font-mono); font-size:0.75rem; width:220px; color:#fff; box-shadow:0 0 15px rgba(0,243,255,0.25);">
+      <h4 class="cyan-glow" style="margin-bottom:8px; font-family:var(--font-cyber); letter-spacing:1px;">DIAGNOSTICS PANEL [F3]</h4>
+      <div style="margin-bottom:6px; display:flex; justify-content:space-between;">
+        <span>FPS RENDER:</span><span id="dev-fps-val" class="green-glow">60</span>
+      </div>
+      <div style="margin-bottom:6px; display:flex; justify-content:space-between;">
+        <span>STAGE DIST:</span><span id="dev-dist-val">0m</span>
+      </div>
+      <div style="margin-bottom:6px; display:flex; justify-content:space-between;">
+        <span>SCENE STATE:</span><span id="dev-scene-val" class="cyan-glow">MENU</span>
+      </div>
+      <div style="margin-bottom:6px; display:flex; justify-content:space-between;">
+        <span>RUNNER POS:</span><span id="dev-pos-val">X:0 Y:0</span>
+      </div>
+      <div style="margin-bottom:6px; display:flex; justify-content:space-between;">
+        <span>OBJECT COUNT:</span><span id="dev-objects-val">0</span>
+      </div>
+      <div style="margin-bottom:6px; display:flex; justify-content:space-between;">
+        <span>HEAP MEMORY:</span><span id="dev-memory-val">45.2 MB</span>
+      </div>
+      <div style="margin-bottom:6px; display:flex; justify-content:space-between;">
+        <span>COLLISIONS:</span><span id="dev-collisions-val" class="text-red">0</span>
+      </div>
+      <div style="margin-bottom:6px; display:flex; justify-content:space-between;">
+        <span>NET CONNECTION:</span><span id="dev-net-val">OFFLINE</span>
+      </div>
+      <div style="margin-bottom:6px; display:flex; justify-content:space-between;">
+        <span>PING METRIC:</span><span id="dev-ping-val">--ms</span>
+      </div>
+      <div style="margin-bottom:10px; display:flex; justify-content:space-between;">
+        <span>LOBBY CODE:</span><span id="dev-room-val">------</span>
+      </div>
+
+      <div style="margin-bottom:8px; border-top:1px solid rgba(255,255,255,0.1); padding-top:8px;">
+        <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+          <input type="checkbox" id="chk-dev-hitboxes" style="cursor:pointer;">
+          <span>SHOW HITBOXES</span>
+        </label>
+      </div>
+      <div style="margin-bottom:8px;">
+        <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+          <input type="checkbox" id="chk-dev-particles" checked style="cursor:pointer;">
+          <span>EMIT PARTICLES</span>
+        </label>
+      </div>
+
+      <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:8px; display:flex; flex-direction:column; gap:6px;">
+        <button id="btn-dev-spawn-drone" class="menu-btn btn-sm primary-glow" style="text-align:left; font-size:10px; padding:4px 8px;">SPAWN SENTRY DRONE</button>
+        <button id="btn-dev-spawn-mine" class="menu-btn btn-sm secondary-glow" style="text-align:left; font-size:10px; padding:4px 8px;">SPAWN FLOOR MINE</button>
+        <button id="btn-dev-spawn-boss" class="menu-btn btn-sm warning-glow" style="text-align:left; font-size:10px; padding:4px 8px;">FORCE BOSS BATTLE</button>
+        <button id="btn-dev-trigger-glitch" class="menu-btn btn-sm" style="text-align:left; font-size:10px; padding:4px 8px; border-color:var(--color-yellow); color:var(--color-yellow);">FORCE MATRIX GLITCH</button>
+      </div>
+    </div>
+
+    <!-- ==================== PLAY WITH FRIEND (MULTIPLAYER) ==================== -->
+    <div id="multiplayer-menu" class="screen-overlay hidden">
+      <!-- 1. HOME VIEW: Choose to create or join -->
+      <div id="mp-home-view" class="menu-panel">
+        <h2 class="panel-title">PLAY WITH FRIEND</h2>
+        <div class="menu-options vertical" style="width: 100%;">
+          <button id="btn-mp-create" class="menu-btn primary-glow">CREATE LOBBY ROOM</button>
+          <button id="btn-mp-join-init" class="menu-btn secondary-glow">JOIN LOBBY ROOM</button>
+          <button id="btn-mp-back" class="menu-btn">RETURN TO TERMINAL</button>
+        </div>
+      </div>
+
+      <!-- 2. JOIN VIEW: Input Room Code -->
+      <div id="mp-join-view" class="menu-panel hidden">
+        <h2 class="panel-title">JOIN SECURE LOBBY</h2>
+        <div class="panel-content scrollable text-center">
+          <label style="font-family: var(--font-cyber); letter-spacing: 1px; color: var(--primary-cyan); font-size: 0.85rem; display: block; margin-bottom: 15px;">ENTER 6-CHARACTER ROOM CODE</label>
+          <input type="text" id="input-mp-code" maxlength="6" placeholder="XXXXXX" style="background: rgba(0, 0, 0, 0.6); border: 2px solid var(--primary-pink); border-radius: 4px; color: #fff; font-family: var(--font-cyber); font-size: 1.8rem; text-align: center; width: 80%; padding: 8px; text-transform: uppercase; outline: none; box-shadow: 0 0 10px rgba(255, 0, 127, 0.2); margin-bottom: 25px;">
+        </div>
+        <div class="menu-options vertical" style="width: 100%;">
+          <button id="btn-mp-join-submit" class="menu-btn primary-glow">ESTABLISH CONNECTION</button>
+          <button id="btn-mp-join-back" class="menu-btn">BACK</button>
+        </div>
+      </div>
+
+      <!-- 3. LOBBY VIEW: Waiting for players, chat, and status indicators -->
+      <div id="mp-lobby-view" class="menu-panel wide hidden" style="height: 520px;">
+        <h2 class="panel-title">MULTIPLAYER WAITING ROOM</h2>
+        <div style="display: flex; gap: 20px; width: 100%; height: calc(100% - 100px);">
+          <!-- Left Panel: Lobby details, invite, and ready states -->
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(255,255,255,0.08); padding-right: 15px;">
+            <div>
+              <div class="store-credits" style="font-size: 1rem; margin-bottom: 10px;">LOBBY CODE: <span id="mp-room-code-display" class="cyan-glow">------</span></div>
+              <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+                <button id="btn-mp-copy-code" class="menu-btn btn-sm" style="flex: 1; font-size: 10px;">COPY CODE</button>
+                <button id="btn-mp-copy-link" class="menu-btn btn-sm secondary-glow" style="flex: 1; font-size: 10px;">COPY LINK</button>
+              </div>
+              <div style="font-size: 0.8rem; color: #777; margin-bottom: 15px;" id="mp-lobby-status">WAITING FOR PLAYER...</div>
+            </div>
+
+            <!-- Ready state blocks -->
+            <div style="display: flex; flex-direction: column; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem;">
+                <span>PLAYER 1 (BLUE): <span id="mp-p1-name" style="font-weight:bold; color:var(--primary-cyan);">RUNNER</span></span>
+                <span id="ready-p1" class="ready-status text-red">NOT READY</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem;">
+                <span>PLAYER 2 (RED): <span id="mp-p2-name" style="font-weight:bold; color:var(--primary-pink);">PENDING</span></span>
+                <span id="ready-p2" class="ready-status text-red">NOT READY</span>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <button id="btn-mp-ready" class="menu-btn primary-glow btn-sm">TOGGLE READY</button>
+              <button id="btn-mp-sim-join" class="menu-btn secondary-glow btn-sm">CONNECT SIMULATED PLAYER 2</button>
+              <button id="btn-mp-disconnect-debug" class="menu-btn warning-glow btn-sm">SIMULATE DISCONNECT</button>
+              <button id="btn-mp-lobby-leave" class="menu-btn btn-sm">LEAVE LOBBY</button>
+            </div>
+          </div>
+
+          <!-- Right Panel: Chat log -->
+          <div style="flex: 1.2; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="font-family: var(--font-cyber); font-size: 0.85rem; color: var(--primary-pink); border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 6px; margin-bottom: 8px;">COMMUNICATION PORT LOGS</div>
+            <div id="mp-chat-logs" class="scrollable" style="flex-grow: 1; overflow-y: auto; background: rgba(0,0,0,0.4); border-radius: 4px; padding: 10px; margin-bottom: 10px; font-family: var(--font-mono); font-size: 0.75rem; text-align: left; display: flex; flex-direction: column; gap: 6px;">
+              <!-- Dynamic Chat Messages -->
+            </div>
+            <div style="display: flex; gap: 6px;">
+              <input type="text" id="mp-chat-input" placeholder="Type transmission..." style="flex-grow: 1; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; color: #fff; padding: 6px 10px; font-family: var(--font-body); font-size: 0.8rem; outline: none;">
+              <button id="btn-mp-chat-send" class="menu-btn btn-sm primary-glow" style="padding: 6px 12px !important;">SEND</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. DISCONNECT VIEW -->
+      <div id="mp-disconnect-view" class="menu-panel hidden">
+        <h2 class="panel-title error-glitch" data-text="LINK LOST">LINK LOST</h2>
+        <div class="panel-content scrollable text-center">
+          <p class="text-red">PEER DISCONNECTED FROM NETWORK CORE</p>
+          <br>
+          <p>The host or client terminated the connection link.</p>
+        </div>
+        <div class="menu-options vertical" style="width: 100%;">
+          <button id="btn-mp-reconnect" class="menu-btn primary-glow">RE-ESTABLISH LINK</button>
+          <button id="btn-mp-disconnect-main" class="menu-btn">RETURN TO MENU</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating centered countdown numbers overlays -->
+    <div id="mp-countdown-overlay" class="screen-overlay hidden" style="background: rgba(0,0,0,0.9); z-index: 10000;">
+      <div id="mp-countdown-number" class="glitch" style="font-family: var(--font-cyber); font-size: 8rem; color: var(--primary-cyan); text-shadow: var(--glow-cyan);">3</div>
+    </div>
+
+    <!-- ==================== CAMPAIGN WORLD MAP ==================== -->
+    <div id="campaign-world-map" class="screen-overlay hidden">
+      <div class="wm-header">
+        <div class="wm-title-group">
+          <h1 class="wm-title">⚡ NEXUS BREACH CAMPAIGN</h1>
+          <p class="wm-subtitle">Select your next district to infiltrate</p>
+        </div>
+        <div class="wm-stats">
+          <span id="wm-total-stars" class="wm-stat">★ 0 / 33</span>
+          <span id="wm-stages-done" class="wm-stat">0 / 11 STAGES</span>
+        </div>
+        <button id="wm-btn-back" class="menu-btn secondary-glow" style="margin:0;">← RETURN</button>
+      </div>
+      <div class="wm-content">
+        <canvas id="wm-canvas" class="wm-canvas"></canvas>
+        <!-- Stage Briefing Panel -->
+        <div id="wm-briefing-panel" class="wm-briefing wm-panel-hidden">
+          <div class="wm-brief-header">
+            <span id="wm-stage-num" class="wm-brief-num">STAGE 1</span>
+            <span id="wm-stage-diff" class="wm-brief-diff">EASY</span>
+            <button id="wm-btn-close-briefing" class="wm-close-btn">✕</button>
+          </div>
+          <h2 id="wm-stage-name" class="wm-brief-name">Escape Facility</h2>
+          <p id="wm-stage-desc" class="wm-brief-desc"></p>
+          <div class="wm-brief-section">
+            <h4>OBJECTIVES</h4>
+            <ul id="wm-objectives-list" class="wm-obj-list"></ul>
+          </div>
+          <div class="wm-brief-section">
+            <h4>BEST PERFORMANCE</h4>
+            <div id="wm-stars" class="wm-stars-row"></div>
+          </div>
+          <button id="wm-btn-launch" class="menu-btn campaign-launch-btn">▶ LAUNCH MISSION</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MISSION COMPLETE OVERLAY ==================== -->
+    <div id="mission-complete-overlay" class="screen-overlay hidden">
+      <div class="mc-container">
+        <div class="mc-top-bar">
+          <div class="mc-badge">MISSION COMPLETE</div>
+          <h2 id="mc-stage-title" class="mc-title"></h2>
+        </div>
+        <div class="mc-center">
+          <div id="mc-rank-display" class="mc-rank">S</div>
+          <div id="mc-stars" class="mc-stars"></div>
+        </div>
+        <div class="mc-stats-row">
+          <div class="mc-stat-block"><span class="mc-stat-label">TIME</span><span id="mc-time-val" class="mc-stat-val">0:00</span></div>
+          <div class="mc-stat-block"><span class="mc-stat-label">DISTANCE</span><span id="mc-distance-val" class="mc-stat-val">0m</span></div>
+          <div class="mc-stat-block"><span class="mc-stat-label">CREDITS</span><span id="mc-coins-val" class="mc-stat-val">+0</span></div>
+          <div class="mc-stat-block"><span class="mc-stat-label">SECRETS</span><span id="mc-secrets-val" class="mc-stat-val">0/0</span></div>
+          <div class="mc-stat-block"><span class="mc-stat-label">SCORE</span><span id="mc-score-val" class="mc-stat-val">0</span></div>
+          <div class="mc-stat-block xp"><span class="mc-stat-label">XP EARNED</span><span id="mc-xp-val" class="mc-stat-val xp">+0 XP</span></div>
+        </div>
+        <div class="mc-obj-section">
+          <h4 class="mc-obj-title">OBJECTIVES</h4>
+          <div id="mc-objectives" class="mc-objectives"></div>
+        </div>
+        <div class="mc-actions">
+          <button id="mc-btn-retry" class="menu-btn secondary-glow">↺ RETRY</button>
+          <button id="mc-btn-map"   class="menu-btn primary-glow">🗺 WORLD MAP</button>
+          <button id="mc-btn-next"  class="menu-btn campaign-launch-btn">NEXT STAGE ›</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== ACCOUNT LOGIN & BACKUP OVERLAY ==================== -->
+    <div id="login-account-overlay" class="screen-overlay hidden">
+      <div class="account-card">
+        <div class="account-header">
+          <h2 class="account-title">🛡️ PLAYER ACCESS TERMINAL</h2>
+          <p class="account-subtitle">Log in to sync progress, stats, and campaign backup</p>
+        </div>
+        
+        <div class="account-tabs">
+          <button id="tab-acc-login" class="tab-btn active">ACCOUNT LOGIN</button>
+          <button id="tab-acc-register" class="tab-btn">NEW REGISTRATION</button>
+        </div>
+
+        <!-- Login Form -->
+        <div id="form-acc-login" class="account-form-body">
+          <div class="form-group">
+            <label class="form-label">USERNAME</label>
+            <input type="text" id="acc-login-username" class="cyber-input" placeholder="Enter username..." autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">SECURITY PIN / PASSWORD</label>
+            <input type="password" id="acc-login-password" class="cyber-input" placeholder="Enter password..." />
+          </div>
+          <div id="acc-login-msg" class="acc-error-msg hidden"></div>
+          <button id="btn-acc-login-submit" class="menu-btn primary-glow">▶ AUTHENTICATE & LOAD SAVES</button>
+        </div>
+
+        <!-- Register Form -->
+        <div id="form-acc-register" class="account-form-body hidden">
+          <div class="form-group">
+            <label class="form-label">NEW USERNAME</label>
+            <input type="text" id="acc-reg-username" class="cyber-input" placeholder="3-15 chars, letters/numbers" autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">CREATE PASSWORD</label>
+            <input type="password" id="acc-reg-password" class="cyber-input" placeholder="Password (min 3 chars)" />
+          </div>
+          <div id="acc-reg-msg" class="acc-error-msg hidden"></div>
+          <button id="btn-acc-reg-submit" class="menu-btn campaign-launch-btn">⚡ REGISTER NEW ACCOUNT</button>
+        </div>
+
+        <!-- Active User Profile & History Summary -->
+        <div id="acc-active-info" class="acc-active-box">
+          <div class="acc-user-badge">
+            <span id="acc-display-avatar">🧑‍🎤</span>
+            <div class="acc-user-meta">
+              <span id="acc-display-name" class="acc-uname">GUEST RUNNER</span>
+              <span id="acc-display-level" class="acc-ulevel">LEVEL 1 RUNNER</span>
+            </div>
+          </div>
+          <div class="acc-stats-summary">
+            <div class="acc-stat-mini"><span class="lbl">HIGH SCORE</span><span id="acc-stat-score" class="val">0</span></div>
+            <div class="acc-stat-mini"><span class="lbl">BEST DISTANCE</span><span id="acc-stat-dist" class="val">0m</span></div>
+            <div class="acc-stat-mini"><span class="lbl">STARS</span><span id="acc-stat-stars" class="val">★ 0/33</span></div>
+          </div>
+          <button id="btn-acc-continue" class="menu-btn primary-glow">▶ CONTINUE PLAYING</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== VERSUS MATCH RESULT & SCORE COMPARISON OVERLAY ==================== -->
+    <div id="vs-gameover-overlay" class="screen-overlay hidden">
+      <div class="vs-container">
+        <div class="vs-top-bar">
+          <div id="vs-winner-banner" class="vs-winner-banner">🏆 PLAYER 1 WINS!</div>
+        </div>
+
+        <div class="vs-comparison-grid">
+          <!-- Player 1 Card -->
+          <div id="vs-card-p1" class="vs-player-card">
+            <div class="vs-avatar" id="vs-p1-avatar">🧑‍🎤</div>
+            <div class="vs-name" id="vs-p1-name">PLAYER 1</div>
+            <div class="vs-stat-row"><span>SCORE:</span><span id="vs-p1-score" class="val">0</span></div>
+            <div class="vs-stat-row"><span>DISTANCE:</span><span id="vs-p1-dist" class="val">0m</span></div>
+            <div class="vs-stat-row"><span>CREDITS:</span><span id="vs-p1-coins" class="val">0</span></div>
+          </div>
+
+          <div class="vs-divider">VS</div>
+
+          <!-- Player 2 / AI Card -->
+          <div id="vs-card-p2" class="vs-player-card p2">
+            <div class="vs-avatar" id="vs-p2-avatar">🤖</div>
+            <div class="vs-name" id="vs-p2-name">CYBERBOT AI</div>
+            <div class="vs-stat-row"><span>SCORE:</span><span id="vs-p2-score" class="val">0</span></div>
+            <div class="vs-stat-row"><span>DISTANCE:</span><span id="vs-p2-dist" class="val">0m</span></div>
+            <div class="vs-stat-row"><span>CREDITS:</span><span id="vs-p2-coins" class="val">0</span></div>
+          </div>
+        </div>
+
+        <div class="vs-actions">
+          <button id="vs-btn-retry" class="menu-btn primary-glow">↺ REMATCH</button>
+          <button id="vs-btn-main" class="menu-btn secondary-glow">🏠 MAIN MENU</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== EXIT SYSTEM OVERLAY ==================== -->
+    <div id="exit-menu" class="screen-overlay hidden">
+      <div class="menu-panel">
+        <h2 class="panel-title error-glitch" data-text="TERMINAL SHUTDOWN">TERMINAL SHUTDOWN</h2>
+        <div class="panel-content scrollable text-center">
+          <p class="text-red" style="font-size: 1.15rem; margin-bottom: 20px;">GENESIS SYSTEM CORRUPTION HALTED.</p>
+          <p>The neural connection grid has been aborted and offline emulation is active.</p>
+        </div>
+        <button id="btn-reboot" class="menu-btn primary-glow">REBOOT TERMINAL</button>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
+  <!-- Realtime Achievements Popup Container -->
+  <div id="achievement-popup-container"></div>
+
+  <!-- Loading Overlay -->
+  <div id="preloader">
+    <div class="loader-chassis">
+      <div class="loader-glitch" data-text="CYBER DASH">CYBER DASH</div>
+      <div class="loader-sub">COMPILING ENCRYPTED MEMORY CORE...</div>
+      <div class="loader-bar-bg"><div class="loader-bar-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Core Modules Loaded Sequentially (No Server Required for Local Play) -->
+  <script src="js/constants.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/particle.js"></script>
+  <script src="js/progression.js"></script>
+  <script src="js/combat.js"></script>
+  <script src="js/drone_pet.js"></script>
+  <script src="js/stagethemes.js"></script>
+  <script src="js/story.js"></script>
+  <script src="js/grade.js"></script>
+  <script src="js/worldmap.js"></script>
+  <script src="js/npc.js"></script>
+  <script src="js/hq.js"></script>
+  <script src="js/customizer.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/coop_ai.js"></script>
+  <script src="js/multiplayer.js"></script>
+  <script src="js/enemy.js"></script>
+  <script src="js/obstacle.js"></script>
+  <script src="js/boss.js"></script>
+  <script src="js/powerup.js"></script>
+  <script src="js/world.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/devmode.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/landing.js"></script>
+  <!-- Cyberpunk Floating Bug/Error Diagnostics Overlay -->
+  <div id="debug-error-console" style="position:fixed; bottom:15px; right:15px; z-index:999999; background:rgba(10,0,18,0.95); border:2px solid #ff0055; padding:15px; border-radius:4px; font-family:'Share Tech Mono',monospace; color:#00ffff; display:none; max-width:350px; box-shadow:0 0 20px rgba(255,0,85,0.7); font-size:12px;">
+    <div style="font-weight:bold; color:#ff0055; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,0,85,0.3); padding-bottom:5px;">
+      <span>[SYSTEM ANOMALY DETECTED]</span>
+      <button onclick="this.parentElement.parentElement.style.display='none'" style="background:rgba(255,0,85,0.2); border:1px solid #ff0055; color:#fff; cursor:pointer; font-weight:bold; font-size:9px; padding:2px 6px; border-radius:2px;">DISMISS</button>
+    </div>
+    <div id="debug-error-msg" style="word-break:break-all; line-height:1.4;"></div>
+  </div>
+</body>
+</html>

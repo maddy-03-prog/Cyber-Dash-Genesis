@@ -1,0 +1,45 @@
+name: Cyber Dash CI/CD & Deployment Verification
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  verify-frontend-and-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Verify Frontend Directory & Required Assets
+      run: |
+        test -f frontend/index.html || { echo "Missing frontend/index.html"; exit 1; }
+        test -f frontend/404.html || { echo "Missing frontend/404.html"; exit 1; }
+        test -f frontend/manifest.json || { echo "Missing frontend/manifest.json"; exit 1; }
+        test -f frontend/sw.js || { echo "Missing frontend/sw.js"; exit 1; }
+        test -f frontend/css/style.css || { echo "Missing frontend/css/style.css"; exit 1; }
+        test -f frontend/css/landing.css || { echo "Missing frontend/css/landing.css"; exit 1; }
+        test -f frontend/css/theme.css || { echo "Missing frontend/css/theme.css"; exit 1; }
+        test -f frontend/css/responsive.css || { echo "Missing frontend/css/responsive.css"; exit 1; }
+        echo "✓ Frontend assets verified!"
+
+    - name: Verify All 28 JavaScript Modules
+      run: |
+        for file in constants.js storage.js audio.js input.js particle.js progression.js combat.js drone_pet.js stagethemes.js story.js grade.js worldmap.js npc.js hq.js customizer.js player.js coop_ai.js multiplayer.js enemy.js obstacle.js boss.js powerup.js world.js ui.js devmode.js game.js main.js landing.js; do
+          test -f "frontend/js/$file" || { echo "Missing frontend/js/$file"; exit 1; }
+        done
+        echo "✓ All 28 JS modules verified!"
+
+    - name: Install & Test Backend
+      run: |
+        cd backend
+        npm ci
+        node -e "require('./server.js'); console.log('✓ Backend syntax & modules verified!'); process.exit(0);"
