@@ -13,7 +13,7 @@ $backendDir = Join-Path $baseDir "backend"
 $script:issuesFound = 0
 $script:filesChecked = 0
 
-function Check-FileExists ($path, $description) {
+function Test-FilePresence ($path, $description) {
     $script:filesChecked++
     if (Test-Path $path) {
         Write-Host "[OK] $description found: $path" -ForegroundColor Green
@@ -27,16 +27,16 @@ function Check-FileExists ($path, $description) {
 
 # 1. Verify Core HTML Files
 Write-Host "--- 1. Checking HTML Pages ---" -ForegroundColor Yellow
-Check-FileExists "$frontendDir\index.html" "Frontend index.html"
-Check-FileExists "$frontendDir\404.html" "Frontend 404.html"
-Check-FileExists "$frontendDir\offline.html" "Frontend offline.html"
+Test-FilePresence "$frontendDir\index.html" "Frontend index.html"
+Test-FilePresence "$frontendDir\404.html" "Frontend 404.html"
+Test-FilePresence "$frontendDir\offline.html" "Frontend offline.html"
 
 # 2. Verify Stylesheets
 Write-Host "`n--- 2. Checking CSS Stylesheets ---" -ForegroundColor Yellow
-Check-FileExists "$frontendDir\css\theme.css" "Frontend theme.css"
-Check-FileExists "$frontendDir\css\style.css" "Frontend style.css"
-Check-FileExists "$frontendDir\css\landing.css" "Frontend landing.css"
-Check-FileExists "$frontendDir\css\responsive.css" "Frontend responsive.css"
+Test-FilePresence "$frontendDir\css\theme.css" "Frontend theme.css"
+Test-FilePresence "$frontendDir\css\style.css" "Frontend style.css"
+Test-FilePresence "$frontendDir\css\landing.css" "Frontend landing.css"
+Test-FilePresence "$frontendDir\css\responsive.css" "Frontend responsive.css"
 
 # 3. Verify JavaScript Modules (All 28 Modules)
 Write-Host "`n--- 3. Checking JavaScript Modules (28 Modules) ---" -ForegroundColor Yellow
@@ -50,19 +50,19 @@ $jsModules = @(
 )
 
 foreach ($js in $jsModules) {
-    Check-FileExists "$frontendDir\js\$js" "JS Module $js"
+    Test-FilePresence "$frontendDir\js\$js" "JS Module $js"
 }
 
 # 4. Verify Backend & PWA Configs
 Write-Host "`n--- 4. Checking Netlify, Backend & PWA Configs ---" -ForegroundColor Yellow
-Check-FileExists "$baseDir\netlify.toml" "Root netlify.toml"
-Check-FileExists "$frontendDir\_redirects" "Frontend _redirects"
-Check-FileExists "$frontendDir\manifest.json" "Frontend manifest.json"
-Check-FileExists "$frontendDir\sw.js" "Frontend sw.js"
-Check-FileExists "$frontendDir\robots.txt" "Frontend robots.txt"
-Check-FileExists "$frontendDir\sitemap.xml" "Frontend sitemap.xml"
-Check-FileExists "$backendDir\server.js" "Backend server.js"
-Check-FileExists "$backendDir\package.json" "Backend package.json"
+Test-FilePresence "$baseDir\netlify.toml" "Root netlify.toml"
+Test-FilePresence "$frontendDir\_redirects" "Frontend _redirects"
+Test-FilePresence "$frontendDir\manifest.json" "Frontend manifest.json"
+Test-FilePresence "$frontendDir\sw.js" "Frontend sw.js"
+Test-FilePresence "$frontendDir\robots.txt" "Frontend robots.txt"
+Test-FilePresence "$frontendDir\sitemap.xml" "Frontend sitemap.xml"
+Test-FilePresence "$backendDir\server.js" "Backend server.js"
+Test-FilePresence "$backendDir\package.json" "Backend package.json"
 
 # 5. Verify HTML Links & Script Tags in index.html
 Write-Host "`n--- 5. Verifying HTML Script & Link References ---" -ForegroundColor Yellow
@@ -77,7 +77,7 @@ foreach ($match in $scriptMatches) {
         Write-Host "[OK] Remote CDN script: $src" -ForegroundColor Green
     } else {
         $localPath = Join-Path $frontendDir ($src -replace '/', '\')
-        Check-FileExists $localPath "Local script reference ($src)" | Out-Null
+        Test-FilePresence $localPath "Local script reference ($src)" | Out-Null
     }
 }
 
@@ -92,7 +92,7 @@ foreach ($match in $linkMatches) {
         Write-Host "[OK] Remote link reference: $href" -ForegroundColor Green
     } else {
         $localPath = Join-Path $frontendDir ($cleanHref -replace '/', '\')
-        Check-FileExists $localPath "Local stylesheet/asset reference ($href)" | Out-Null
+        Test-FilePresence $localPath "Local stylesheet/asset reference ($href)" | Out-Null
     }
 }
 
