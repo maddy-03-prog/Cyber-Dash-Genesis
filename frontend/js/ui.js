@@ -907,6 +907,17 @@ class UIManager {
       hsEl.innerText = Math.floor(window.storage.state.highScore);
     }
 
+    if (window.api && window.api.getToken()) {
+      window.api.submitScore({
+        username: (window.storage.state.profile && window.storage.state.profile.name) || 'RUNNER',
+        score: Math.floor(runScore),
+        distance: Math.floor(runDist),
+        coins: runCoins,
+        bossesKilled: (window.game && window.game.bossesKilledThisRun) || 0,
+        timeframe: 'alltime'
+      });
+    }
+
     // Update profile name on game over screen
     const goName = document.getElementById('go-profile-name');
     if (goName && window.storage.state.profile) {
@@ -1129,12 +1140,33 @@ class UIManager {
         document.getElementById('form-acc-login')?.classList.add('hidden');
       });
 
-      safeBind('btn-acc-login-submit', () => {
+      safeBind('btn-acc-login-submit', async () => {
         const user = document.getElementById('acc-login-username')?.value || '';
         const pass = document.getElementById('acc-login-password')?.value || '';
         const msgEl = document.getElementById('acc-login-msg');
         
-        const res = window.storage.loginAccount(user, pass);
+        let res = { success: false, msg: 'Invalid login' };
+        if (window.api) {
+          const apiRes = await window.api.login(user, pass);
+          if (apiRes.success) {
+            res = { success: true, msg: 'AUTHENTICATION GRANTED! Welcome Operative.' };
+            if (apiRes.profile) {
+              window.storage.state.profile.name = apiRes.profile.displayName || user;
+              window.storage.state.profile.setupCompleted = true;
+              window.storage.save();
+            }
+            const cloudRes = await window.api.loadCloud();
+            if (cloudRes.success && cloudRes.saveData) {
+              window.storage.state = { ...window.storage.state, ...cloudRes.saveData };
+              window.storage.save();
+            }
+          } else {
+            res = { success: false, msg: apiRes.message || 'Authentication error' };
+          }
+        } else {
+          res = window.storage.loginAccount(user, pass);
+        }
+
         if (msgEl) {
           msgEl.innerText = res.msg;
           msgEl.style.color = res.success ? '#00ff88' : '#ff3366';
@@ -1149,12 +1181,26 @@ class UIManager {
         }
       });
 
-      safeBind('btn-acc-reg-submit', () => {
+      safeBind('btn-acc-reg-submit', async () => {
         const user = document.getElementById('acc-reg-username')?.value || '';
         const pass = document.getElementById('acc-reg-password')?.value || '';
         const msgEl = document.getElementById('acc-reg-msg');
 
-        const res = window.storage.registerAccount(user, pass);
+        let res = { success: false, msg: 'Registration error' };
+        if (window.api) {
+          const apiRes = await window.api.register(user, pass);
+          if (apiRes.success) {
+            res = { success: true, msg: 'NEW OPERATIVE REGISTERED & SYNCED TO MATRIX!' };
+            window.storage.state.profile.name = user;
+            window.storage.state.profile.setupCompleted = true;
+            window.storage.save();
+          } else {
+            res = { success: false, msg: apiRes.message || 'Registration failed' };
+          }
+        } else {
+          res = window.storage.registerAccount(user, pass);
+        }
+
         if (msgEl) {
           msgEl.innerText = res.msg;
           msgEl.style.color = res.success ? '#00ff88' : '#ff3366';

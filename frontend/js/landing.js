@@ -565,14 +565,51 @@ class LandingPage {
     });
   }
 
-  // ==================== 7. LEADERBOARD TABS ====================
+  // ==================== 7. LEADERBOARD TABS & API INTEGRATION ====================
   initLeaderboardTabs() {
-    document.querySelectorAll('.lb-tab').forEach(tab => {
+    const tabs = document.querySelectorAll('.lb-tab');
+    tabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        document.querySelectorAll('.lb-tab').forEach(t => t.classList.remove('active'));
+        tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
+        const text = tab.innerText.toLowerCase();
+        const timeframe = text.includes('weekly') ? 'weekly' : 'alltime';
+        this.fetchAndRenderLeaderboard(timeframe);
       });
     });
+
+    this.fetchAndRenderLeaderboard('alltime');
+  }
+
+  async fetchAndRenderLeaderboard(timeframe = 'alltime') {
+    const tbody = document.getElementById('leaderboard-tbody');
+    if (!tbody) return;
+
+    if (window.api) {
+      const res = await window.api.getLeaderboard(timeframe, 10);
+      if (res && res.success && res.data && res.data.length > 0) {
+        tbody.innerHTML = res.data.map((item, index) => {
+          const medal = index === 0 ? '🥇 #1' : index === 1 ? '🥈 #2' : index === 2 ? '🥉 #3' : `#${index + 1}`;
+          return `
+            <tr>
+              <td>${medal}</td>
+              <td>${item.username || 'RUNNER'}</td>
+              <td style="color:var(--primary-cyan); font-weight:bold;">${(item.score || 0).toLocaleString()}</td>
+              <td>${(item.distance || 0).toLocaleString()}m</td>
+              <td>${(item.coins || 0).toLocaleString()}</td>
+            </tr>
+          `;
+        }).join('');
+        return;
+      }
+    }
+
+    // Default static fallback when offline
+    tbody.innerHTML = `
+      <tr><td>🥇 #1</td><td>CYBER_GHOST_99</td><td style="color:var(--primary-cyan);">984,500</td><td>12,450m</td><td>3,240</td></tr>
+      <tr><td>🥈 #2</td><td>NEXUS_BREACHER</td><td style="color:var(--primary-cyan);">850,200</td><td>10,120m</td><td>2,890</td></tr>
+      <tr><td>🥉 #3</td><td>Maddy (OPERATIVE)</td><td style="color:var(--primary-cyan);">720,100</td><td>8,940m</td><td>2,535</td></tr>
+    `;
   }
 
   // ==================== 8. MULTIPLAYER MESH CANVAS ====================

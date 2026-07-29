@@ -6,7 +6,7 @@ class ConnectionManager {
     this.isConnected = false;
     this.latency = 12; // Simulated ping in milliseconds
     this.socket = null;
-    this.serverUrl = window.BACKEND_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000' : 'https://cyber-dash-genesis-api.onrender.com');
+    this.serverUrl = window.BACKEND_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000' : 'https://cyber-dash-genesis.onrender.com');
   }
 
   connect() {

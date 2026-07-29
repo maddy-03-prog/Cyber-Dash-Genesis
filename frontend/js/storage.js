@@ -88,8 +88,10 @@ class StorageManager {
   save() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state));
-      // Backup state into account registry if logged in
       this.backupActiveAccount();
+      if (window.api && window.api.getToken()) {
+        window.api.saveCloud(this.state);
+      }
     } catch (e) {
       console.error('Failed to write to local storage:', e);
     }

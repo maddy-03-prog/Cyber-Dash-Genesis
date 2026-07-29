@@ -2646,6 +2646,47 @@ canvas {
   background: rgba(255, 0, 127, 0.15);
 }
 
+/* Backend Status Indicator Badge */
+.backend-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  background: rgba(10, 10, 24, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  user-select: none;
+}
+.backend-status-badge .status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #aaa;
+}
+.backend-status-badge.online {
+  border-color: #00ff66;
+  color: #00ff66;
+  box-shadow: 0 0 10px rgba(0, 255, 102, 0.3);
+}
+.backend-status-badge.online .status-dot {
+  background: #00ff66;
+  box-shadow: 0 0 8px #00ff66;
+}
+.backend-status-badge.offline {
+  border-color: var(--primary-pink);
+  color: var(--primary-pink);
+  box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+}
+.backend-status-badge.offline .status-dot {
+  background: var(--primary-pink);
+  box-shadow: 0 0 8px var(--primary-pink);
+}
+
 
 
 

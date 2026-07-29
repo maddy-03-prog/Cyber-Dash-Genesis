@@ -38,10 +38,10 @@ Test-FilePresence "$frontendDir\css\style.css" "Frontend style.css"
 Test-FilePresence "$frontendDir\css\landing.css" "Frontend landing.css"
 Test-FilePresence "$frontendDir\css\responsive.css" "Frontend responsive.css"
 
-# 3. Verify JavaScript Modules (All 28 Modules)
-Write-Host "`n--- 3. Checking JavaScript Modules (28 Modules) ---" -ForegroundColor Yellow
+# 3. Verify JavaScript Modules (All 29 Modules)
+Write-Host "`n--- 3. Checking JavaScript Modules (29 Modules) ---" -ForegroundColor Yellow
 $jsModules = @(
-    "constants.js", "storage.js", "audio.js", "input.js", "particle.js",
+    "api.js", "constants.js", "storage.js", "audio.js", "input.js", "particle.js",
     "progression.js", "combat.js", "drone_pet.js", "stagethemes.js", "story.js",
     "grade.js", "worldmap.js", "npc.js", "hq.js", "customizer.js",
     "player.js", "coop_ai.js", "multiplayer.js", "enemy.js", "obstacle.js",
