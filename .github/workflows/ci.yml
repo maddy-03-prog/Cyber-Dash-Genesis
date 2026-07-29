@@ -41,5 +41,5 @@ jobs:
     - name: Install & Test Backend
       run: |
         cd backend
-        npm ci
+        npm install
         node -e "require('./server.js'); console.log('✓ Backend syntax & modules verified!'); process.exit(0);"
